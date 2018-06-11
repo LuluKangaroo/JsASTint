@@ -1,3 +1,12 @@
+/***********************************
+	Notes:
+
+		Binary operations (+, -, *, /) not 'registered' when declared with var
+		Case only works as AssignmentExpression(?), check back and include scenario
+		of binary expressions within VariableDeclaration
+
+************************************/
+
 // var a = "Jin Huang", b = "Yu Li"
 // var lab = 429
 // var school = "WSU"
@@ -12,7 +21,7 @@ sum = 3 + 4
 
 	// Subtraction
 var minus = 0
-var minus = 2 -1
+var minus = 2 - 1
 minus = 4 - 1
 
 	// Multiplication

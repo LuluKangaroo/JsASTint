@@ -81,6 +81,7 @@ function eval_node(node, env) {
             varName = eval_node(node.left, env)
             varVal = eval_node(node.right, env)
             console.log(varName)
+            console.log('varVal: ')
             console.log(varVal)
             // throw "die Here!"
             env.setVariable(varName, varVal)
@@ -107,6 +108,12 @@ function eval_node(node, env) {
                     return opNode
 
                 case "/":
+
+                    // Divide by 0 Case check
+                    // if(right.value == 0){
+                    //     console.log("Dividing by Zero")
+                    // }
+                
                     opNode = new opNodeDiv(left, right)
                     return opNode
 
