@@ -1,5 +1,4 @@
-
- class onePathEnvironment{
+class onePathEnvironment{
     constructor(){
         this._env = {}
     }
@@ -9,7 +8,7 @@
 
     }
 
-    get getVariable(varName){
+    get getVariable(){
         console.log(this._env[varName])
     }
 
@@ -20,4 +19,4 @@
 
 };
 
- // module.exports = onePathEnvironment;
+module.exports = onePathEnvironment;

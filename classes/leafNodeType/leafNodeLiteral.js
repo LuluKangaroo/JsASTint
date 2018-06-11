@@ -3,7 +3,9 @@ class leafNodeLiteral {
         this._val = value
     }
 
-    get get Expression(){
+    get Expression(){
         return this._val + "Literal"
     }
-}
+};
+
+module.exports = leafNodeLiteral;

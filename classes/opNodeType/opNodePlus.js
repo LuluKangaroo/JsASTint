@@ -3,4 +3,6 @@ class opNodePlus{
         this._left = left
         this._right = right
     }
-}
+};
+
+module.exports = opNodePlus;

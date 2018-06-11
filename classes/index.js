@@ -1,2 +1,2 @@
-export { default as onePathEnvironment} from './onePathEnvironment'
 
+exports.onePathEnvironment = require('./onePathEnvironment.js');

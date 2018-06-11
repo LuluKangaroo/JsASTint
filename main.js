@@ -1,59 +1,45 @@
-// import onePathEnvironment from "./classes/onePathEnvironment";
-// const onePathEnvironment = require('./classes/*');
-// imported.src = 'classes/onePathEnvironment'
-// require("classes/onePathEnvironment")
-class onePathEnvironment{
-    constructor(){
-        this._env = {}
-    }
+/*************************
+    Importing JS Files
+**************************/
+const onePathEnvironment = require('./classes/onePathEnvironment');
+const leafNodeLiteral = require('./classes/leafNodeType/leafNodeLiteral');
+const opNodePlus = require('./classes/opNodeType/opNodePlus');
 
-    setVariable(varName, varValue){
-        this._env[varName] = varValue
+// var glob = require( 'glob' )
+//   , path = require( 'path' );
 
-    }
+// glob.sync( './classes/**/*.js' ).forEach( function( file ) {
+//   require( path.resolve( file ) );
+// });
 
-    getVariable(varName){
-        console.log(this._env[varName])
-    }
 
-    get getEnvironment(){
-        return this._env
-    }
-}
 
-class leafNodeLiteral {
-    constructor(value){
-        this._val = value
-    }
+/*********************
+    Program Start
+**********************/
 
-    get Expression(){
-        return this._val + "Literal"
-    }
-}
-
-class opNodePlus {
-    constructor(left, right){
-        this._left = left
-        this._right = right
-    }
-
-    get Expression(){
-        return this._left.Expression() + this._right.Expression()
-    }
-}
-
-var val = "JIn Huang"
+// Reading file input
 var fs = require('fs');
 var fileName = process.argv[2];
 var srcCode = fs.readFileSync(fileName, 'utf-8');
-var esprima = require('esprima');
-var program = 'const answer = 42';
 
+// Parsing given file
+var esprima = require('esprima');
 var ASTs = esprima.parseScript(srcCode);
 
+// Creating environment for paths
 var env = new onePathEnvironment()
 
+
+
+
+/******************************************************
+    Eval Function
+        Recursively looping through the parsed AST
+*******************************************************/
 function eval_node(node, env) {
+
+    // Checking that environment is recursively passed
     if (env == null){
         throw "Error: Please Check the env!!!"
     }
@@ -143,8 +129,8 @@ ASTs.body.forEach(function (ele) {
 
 });
 
-console.log(env.getEnvironment)
-console.log("###################\n")
+//console.log(env.getEnvironment)
+//console.log("###################\n")
 // env.getVariable('lab')
 
 
