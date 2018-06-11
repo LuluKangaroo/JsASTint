@@ -4,6 +4,9 @@
 const onePathEnvironment = require('./classes/onePathEnvironment');
 const leafNodeLiteral = require('./classes/leafNodeType/leafNodeLiteral');
 const opNodePlus = require('./classes/opNodeType/opNodePlus');
+const opNodeMinus = require('./classes/opNodeType/opNodeMinus');
+const opNodeMult = require('./classes/opNodeType/opNodeMult');
+const opNodeDiv = require('./classes/opNodeType/opNodeDiv');
 
 // var glob = require( 'glob' )
 //   , path = require( 'path' );
@@ -93,6 +96,20 @@ function eval_node(node, env) {
                     // env.expPlus(left, right)
                     opNode = new opNodePlus(left, right)
                     return opNode
+
+                case "-":
+                    opNode = new opNodeMinus(left, right)
+                    return opNode
+
+                case "*":
+                    // env.expPlus(left, right)
+                    opNode = new opNodeMult(left, right)
+                    return opNode
+
+                case "/":
+                    opNode = new opNodeDiv(left, right)
+                    return opNode
+
                 default:
                     throw "STOP: Here is an new Binary Expression You need to add on!!!!"
                     // return

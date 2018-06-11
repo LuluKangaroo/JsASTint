@@ -2,13 +2,19 @@
 // var lab = 429
 // var school = "WSU"
 
-// throw "SSSSSSSSSSSS";
-// console.log("XXXXXXXX")
+/*
+	Testing Binary Operation
+*/
+	// Addition
 var sum = 0
-
 var sum = 1 + 2
-
 sum = 3 + 4
+
+	// Subtraction
+var minus = 0
+var minus = 2 -1
+minus = 4 - 1
+
 
 // boolean1 = true
 
