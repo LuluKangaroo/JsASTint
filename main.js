@@ -89,6 +89,13 @@ function eval_node(node, env) {
             env.setVariable(varName, varVal)
             return
 
+        /****************************************
+            Binary Expression Cases
+
+                instanceof, in, +, -, *, /, %
+                **, |, ^, &, ==, !=, ===, !==
+                <, >, <=, <<, >>, >>>
+        *****************************************/
         case "BinaryExpression":
             opertor = node.operator
             left = eval_node(node.left, env)
@@ -122,14 +129,18 @@ function eval_node(node, env) {
                 default:
                     throw "STOP: Here is an new Binary Expression You need to add on!!!!"
                     // return
-
             }
             return
-			
+		
+        /****************************************
+            Logical Expression Cases
+            
+                &&, ||
+        *****************************************/
 		case "LogicalExpression":
-		opertor = node.operator
-		left = eval_node(node.left, env)
-		right = eval_node(node.right, env)
+    		opertor = node.operator
+    		left = eval_node(node.left, env)
+    		right = eval_node(node.right, env)
 
 			switch (opertor){
 				case "&&":
@@ -142,11 +153,36 @@ function eval_node(node, env) {
 					return opNode
 
 				default:
-					throw "STOP: Here is an new Binary Expression You need to add on!!!!"
+					throw "STOP: Here is an new Logical Expression You need to add on!!!!"
 					// return
-
 			}
 			return
+
+        /****************************************
+            Uniary Expression Cases
+            
+                +, -, ~, !, delete, void, typeof
+        *****************************************/
+        case "UnaryExpression":
+            // opertor = node.operator
+            // left = eval_node(node.left, env)
+            // right = eval_node(node.right, env)
+
+            switch (opertor){
+                case "+":
+                    // env.expPlus(left, right)
+                    // opNode = new opNodeAnd(left, right)
+                    // return opNode
+
+                case "-":
+                    // opNode = new opNodeOr(left, right)
+                    // return opNode
+
+                default:
+                    throw "STOP: Here is an new Unary Expression You need to add on!!!!"
+                    // return
+            }
+            return
 
         case "Identifier":
             varId = node.name
@@ -182,6 +218,6 @@ ASTs.body.forEach(function (ele) {
 // env.getVariable('lab')
 
 
-// console.log(JSON.stringify(ASTs, null, 2))
+console.log(JSON.stringify(ASTs, null, 2))
 // console.log("#########################\n")
 // console.log(typeof ASTs.body)
