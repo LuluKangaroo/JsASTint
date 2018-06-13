@@ -7,6 +7,8 @@ const opNodePlus = require('./classes/opNodeType/opNodePlus');
 const opNodeMinus = require('./classes/opNodeType/opNodeMinus');
 const opNodeMult = require('./classes/opNodeType/opNodeMult');
 const opNodeDiv = require('./classes/opNodeType/opNodeDiv');
+const opNodeAnd = require('./classes/opNodeType/opNodeAnd');
+const opNodeOr = require('./classes/opNodeType/opNodeOr');
 
 // var glob = require( 'glob' )
 //   , path = require( 'path' );
@@ -123,6 +125,28 @@ function eval_node(node, env) {
 
             }
             return
+			
+		case "LogicalExpression":
+		opertor = node.operator
+		left = eval_node(node.left, env)
+		right = eval_node(node.right, env)
+
+			switch (opertor){
+				case "&&":
+					// env.expPlus(left, right)
+					opNode = new opNodeAnd(left, right)
+					return opNode
+
+				case "||":
+					opNode = new opNodeOr(left, right)
+					return opNode
+
+				default:
+					throw "STOP: Here is an new Binary Expression You need to add on!!!!"
+					// return
+
+			}
+			return
 
         case "Identifier":
             varId = node.name

@@ -32,17 +32,19 @@ mult = 3 * 2
 var divide = 6 / 3
 divide = 6 / 3
 
-// boolean1 = true
+ boolean1 = true
 
-// boolean2 = false
+ boolean2 = false
 
 // empty = null
 
 // var doub = 2.5
 
-// bin = boolean1 && boolean2
+bin = boolean1 && boolean2
 
-// bin = boolean1 || boolean2
+ bin = boolean1 || boolean2
+
+bin = !boolean1
 
 // var dict = {}
 // dict['key1'] = "Jin Huang"
