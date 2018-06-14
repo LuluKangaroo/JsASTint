@@ -35,6 +35,12 @@ var ASTs = esprima.parseScript(srcCode);
 // Creating environment for paths
 var env = new onePathEnvironment()
 
+// Writing Parsed AST to JSON file
+fs.writeFile('testWrite.JSON', JSON.stringify(ASTs, null, 2), (Error) => {
+    if (Error) throw Error;
+
+    console.log('Parsed trees saved.')
+});
 
 
 

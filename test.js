@@ -31,7 +31,8 @@
 // var mult = 3 * 2
 // mult = 3 * 2
 
-// 	// Division
+	// Division
+// var div = 0
 // var divide = 6 / 3
 // divide = 6 / 3
 
@@ -65,9 +66,15 @@
 
 	// Greater than
 if (test1 > 11) {
+	test1 = 2
+
+}else if(test1 < 11) {
 	test1 = 1
-}else{
+
+}else if(false){
 	test1 = 0
+}else {
+	test1 = -1
 }
 
 // 	// Less than
