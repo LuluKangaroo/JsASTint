@@ -65,17 +65,17 @@
 **************************************/
 
 	// Greater than
-if (test1 > 11) {
-	test1 = 2
+//if (test1 > 11) {
+	//test1 = 2
 
-}else if(test1 < 11) {
-	test1 = 1
+//}else if(test1 < 11) {
+	//test1 = 1
 
-}else if(false){
-	test1 = 0
-}else {
-	test1 = -1
-}
+//}else if(false){
+	//test1 = 0
+//}else {
+	//test1 = -1
+//}
 
 // 	// Less than
 // if (test2 < 6) {
@@ -103,6 +103,7 @@ if (test1 > 11) {
 /**************************
 	Miscellaneous Tests
 ***************************/
+a = round(0.8);
 // empty = null
 
 // var doub = 2.5

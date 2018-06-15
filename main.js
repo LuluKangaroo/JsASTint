@@ -132,6 +132,69 @@ function eval_node(node, env) {
                     opNode = new opNodeDiv(left, right)
                     return opNode
 
+				case "%":
+					opNode = new opNodeMod(left, right)
+					return opNode
+					
+				case "**":
+					opNode = new opNodeExp(left, right)
+					return opNode
+					
+				case "|":
+					opNode = new opNodeBitOr(left, right)
+					return opNode
+					
+				case "^":
+					opNode = new opNodeBitXOr(left, right)
+					return opNode
+					
+				case "&":
+					opNode = new opNodeBitAnd(left, right)
+					return opNode
+					
+				case "==":
+					opNode = new opNodeEqual(left, right)
+					return opNode
+					
+				case "!=":
+					opNode = new opNodeNotEqual(left, right)
+					return opNode
+					
+				case "===":
+					opNode = new opNodeStEqual(left, right)
+					return opNode
+					
+				case "!==":
+					opNode = new opNodeStNotEqual(left, right)
+					return opNode
+					
+				case "<":
+					opNode = new opNodeLess(left, right)
+					return opNode
+					
+				case ">":
+					opNode = new opNodeGreat(left, right)
+					return opNode
+					
+				case "<=":
+					opNode = new opNodeLessEq(left, right)
+					return opNode
+					
+				case ">=":
+					opNode = new opNodeGreatEq(left, right)
+					return opNode
+					
+				case "<<":
+					opNode = new opNodeLeftShift(left, right)
+					return opNode
+					
+				case ">>":
+					opNode = new opNodeSignRightShift(left, right)
+					return opNode
+					
+				case ">>>":
+					opNode = new opNodeZeroRightShift(left, right)
+					return opNode
                 default:
                     throw "STOP: Here is an new Binary Expression You need to add on!!!!"
                     // return
@@ -199,6 +262,19 @@ function eval_node(node, env) {
         case "Literal":
             value = new leafNodeLiteral(node.value)
             return value
+			
+		case "CallExpression":
+			calle = eval_node(node.callee, env)
+			cType = calle.type
+			cName = calle.name
+			var newList = []
+			var argList = node.arguments
+			for (var args in argList) {
+				aType = args.type
+				aVal = args.value
+				newList.push({aType, aVal})
+			}
+			return ("Call name: " + cName + ", Arguments: " + newList)
 
         default:
             console.log(ins_node)
