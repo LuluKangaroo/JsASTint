@@ -9,6 +9,7 @@ const opNodeMult = require('./classes/opNodeType/opNodeMult');
 const opNodeDiv = require('./classes/opNodeType/opNodeDiv');
 const opNodeAnd = require('./classes/opNodeType/opNodeAnd');
 const opNodeOr = require('./classes/opNodeType/opNodeOr');
+const opNodeInstance = require('./classes/opNodeType/opNodeInstance');
 
 // var glob = require( 'glob' )
 //   , path = require( 'path' );
@@ -108,6 +109,15 @@ function eval_node(node, env) {
             right = eval_node(node.right, env)
 
             switch (opertor){
+                case "instanceof":
+                    // env.expPlus(left, right)
+                    opNode = new opNodeInstance(left, right)
+                    return opNode
+
+                case "in":
+                    opNode = new opNodeIn(left, right)
+                    return opNode
+
                 case "+":
                     // env.expPlus(left, right)
                     opNode = new opNodePlus(left, right)
