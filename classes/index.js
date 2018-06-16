@@ -1,2 +1,13 @@
+// import opNodeType from './opNodeType';
+// import leafNodeType from './leafNodeType';
+import ASTNode from './ASTNode';
+import onePathEnvironment from './onePathEnvironment';
 
-exports.onePathEnvironment = require('./onePathEnvironment.js');
+console.log("in index.js file");
+
+export {
+	// opNodeType,
+	// leafNodeType,
+	ASTNode,
+	onePathEnvironment
+}

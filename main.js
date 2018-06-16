@@ -11,6 +11,9 @@ const opNodeAnd = require('./classes/opNodeType/opNodeAnd');
 const opNodeOr = require('./classes/opNodeType/opNodeOr');
 const opNodeInstance = require('./classes/opNodeType/opNodeInstance');
 
+// console.log('before import');
+// import {opNodeType, leafNodeType, ASTNode, onePathEnvironment} from './classes/index';
+// console.log('after import');
 // var glob = require( 'glob' )
 //   , path = require( 'path' );
 
