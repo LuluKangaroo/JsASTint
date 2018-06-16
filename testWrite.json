@@ -21,6 +21,11 @@
               "type": "Literal",
               "value": 0.8,
               "raw": "0.8"
+            },
+            {
+              "type": "Literal",
+              "value": 98,
+              "raw": "98"
             }
           ]
         }

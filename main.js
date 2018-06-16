@@ -275,16 +275,24 @@ function eval_node(node, env) {
 			
 		case "CallExpression":
 			calle = eval_node(node.callee, env)
-			cType = calle.type
-			cName = calle.name
+            console.log("\nCalle var: " + calle);
+            console.log("typeof Calle: " + typeof calle + "\n");
+
+            // Creating list to hold function call parameters
 			var newList = []
 			var argList = node.arguments
-			for (var args in argList) {
-				aType = args.type
-				aVal = args.value
-				newList.push({aType, aVal})
-			}
-			return ("Call name: " + cName + ", Arguments: " + newList)
+                console.log("\nargList: "+ argList)
+                console.log("typeof argList: "+ typeof argList)
+            // For each iteration through each parameter within argument object
+            argList.forEach(function (ele) {
+                console.log('\nFor each loop iteration')
+                param = eval_node(ele, env)
+                console.log("Param: " + JSON.stringify(param, null, 2) + "\n")
+                // Pushing final value of parameter to list
+                newList.push(param);
+            })
+
+			return ("Call name: " + cName + ", Arguments: " + JSON.stringify(newList, null, 2))
 
         default:
             console.log(ins_node)
@@ -305,11 +313,12 @@ ASTs.body.forEach(function (ele) {
 
 });
 
-//console.log(env.getEnvironment)
+console.log("\nPrinting Environment: ")
+console.log(env.getEnvironment)
 //console.log("###################\n")
 // env.getVariable('lab')
 
-
+ 
 console.log(JSON.stringify(ASTs, null, 2))
 // console.log("#########################\n")
 // console.log(typeof ASTs.body)
