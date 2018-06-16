@@ -77,7 +77,7 @@ function eval_node(node, env) {
 
         case "VariableDeclarator":
             varName = eval_node(node.id, env)
-            varVal = eval_node(node.init, env)
+            varVal = evassl_node(node.init, env)
             // console.log("case2\n")
             env.setVariable(varName, varVal )
             return
@@ -293,6 +293,12 @@ function eval_node(node, env) {
             })
 
 			return ("Call name: " + cName + ", Arguments: " + JSON.stringify(newList, null, 2))
+
+        case "WhileStatement":
+            conditional = eval_node(node.test, env)
+            console.log('Conditional: ' + conditional)
+
+            return;
 
         default:
             console.log(ins_node)

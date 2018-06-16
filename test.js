@@ -103,13 +103,15 @@
 	Loop Tests
 ***************************/
 // While loop
-
+while(counter < 2){
+	counter ++;
+}
 
 
 /**************************
 	Miscellaneous Tests
 ***************************/
-a = round(0.8, 98);
+// a = round(0.8, 98);
 // empty = null
 
 // var doub = 2.5
