@@ -10,6 +10,7 @@ const opNodeDiv = require('./classes/opNodeType/opNodeDiv');
 const opNodeAnd = require('./classes/opNodeType/opNodeAnd');
 const opNodeOr = require('./classes/opNodeType/opNodeOr');
 const opNodeInstance = require('./classes/opNodeType/opNodeInstance');
+const funcNodeRound = require('./classes/funcNodeType/funcNoderound');
 
 // var glob = require( 'glob' )
 //   , path = require( 'path' );
@@ -89,7 +90,8 @@ function eval_node(node, env) {
         case "AssignmentExpression":
             varName = eval_node(node.left, env)
             varVal = eval_node(node.right, env)
-            console.log(varName)
+            // console.log("\nAssignmentExpression prints: ")
+            // console.log(varName)
             console.log('varVal: ')
             console.log(varVal)
             // throw "die Here!"
@@ -243,7 +245,7 @@ function eval_node(node, env) {
                 +, -, ~, !, delete, void, typeof
         *****************************************/
         case "UnaryExpression":
-            // opertor = node.operator
+            opertor = node.operator
             // left = eval_node(node.left, env)
             // right = eval_node(node.right, env)
 
@@ -274,25 +276,23 @@ function eval_node(node, env) {
             return value
 			
 		case "CallExpression":
-			calle = eval_node(node.callee, env)
-            console.log("\nCalle var: " + calle);
-            console.log("typeof Calle: " + typeof calle + "\n");
+			callName = eval_node(node.callee, env)
 
             // Creating list to hold function call parameters
-			var newList = []
+			var callArgs = [] // New list of arguments after eval_node
 			var argList = node.arguments
-                console.log("\nargList: "+ argList)
-                console.log("typeof argList: "+ typeof argList)
             // For each iteration through each parameter within argument object
             argList.forEach(function (ele) {
-                console.log('\nFor each loop iteration')
-                param = eval_node(ele, env)
-                console.log("Param: " + JSON.stringify(param, null, 2) + "\n")
+                arg = eval_node(ele, env)
                 // Pushing final value of parameter to list
-                newList.push(param);
+                callArgs.push(arg);
             })
 
-			return ("Call name: " + cName + ", Arguments: " + JSON.stringify(newList, null, 2))
+            funcNode = new funcNodeRound(callName, callArgs)
+            console.log("\nfuncNode: " + funcNode.Expression)
+            console.log("\nfuncNode: " + funcNode)
+
+			return funcNode 
 
         case "WhileStatement":
             conditional = eval_node(node.test, env)
