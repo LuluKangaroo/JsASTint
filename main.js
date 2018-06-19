@@ -40,14 +40,16 @@ var env = new onePathEnvironment()
 
 var fs2 = require('fs');
 // Writing Parsed AST to JSON file
+var srcFileName = fileName.substring(fileName.indexOf('/'), fileName.indexOf('.'))
+var treeFileName = srcFileName + ".JSON"
 
-fs2.writeFile('testWriteNew.JSON', JSON.stringify(ASTs, null, 2), function(Error){
+fs2.writeFile('./parsedASTs/' + treeFileName, JSON.stringify(ASTs, null, 2), (Error) => {
     if (Error) throw Error;
 
-    console.log('Parsed trees saved.')
+    console.log('Parsed tree saved to file: ')
 });
 
-console.log('exit here!!!!!!!');
+// console.log('exit here!!!!!!!');
 // exit();
 
 /******************************************************
@@ -116,7 +118,6 @@ function eval_node(node, env) {
 
             switch (opertor){
                 case "instanceof":
-                    // env.expPlus(left, right)
                     opNode = new opNodeInstance(left, right)
                     return opNode
 
@@ -125,7 +126,6 @@ function eval_node(node, env) {
                     return opNode
 
                 case "+":
-                    // env.expPlus(left, right)
                     opNode = new opNodePlus(left, right)
                     return opNode
 
@@ -134,17 +134,10 @@ function eval_node(node, env) {
                     return opNode
 
                 case "*":
-                    // env.expPlus(left, right)
                     opNode = new opNodeMult(left, right)
                     return opNode
 
-                case "/":
-
-                    // Divide by 0 Case check
-                    // if(right.value == 0){
-                    //     console.log("Dividing by Zero")
-                    // }
-                
+                case "/":                
                     opNode = new opNodeDiv(left, right)
                     return opNode
 
@@ -213,7 +206,6 @@ function eval_node(node, env) {
 					return opNode
                 default:
                     throw "STOP: Here is an new Binary Expression You need to add on!!!!"
-                    // return
             }
             return
 		
@@ -360,14 +352,14 @@ ASTs.body.forEach(function (ele) {
     // console.log(ele.type)
     // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$")
 
-    eval_node(ele,env)
+    // eval_node(ele,env)
 
 });
 
-// console.log("\n------Printing Environment------")
-// // console.log('getEnvironment getter function: \n')
-// // console.log(env.getEnvironment)
-// console.log('\nprintEnvironment function: ')
+console.log("\n------Printing Environment------")
+// console.log('getEnvironment getter function: \n')
+// console.log(env.getEnvironment)
+console.log('\nprintEnvironment function: ')
 // console.log(env.printEnvironment())
 //console.log("###################\n")
 // env.getVariable('lab')

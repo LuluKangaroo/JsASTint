@@ -1,0 +1,186 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "Identifier",
+          "name": "b",
+          "loc": {
+            "start": {
+              "line": 115,
+              "column": 0
+            },
+            "end": {
+              "line": 115,
+              "column": 1
+            }
+          }
+        },
+        "right": {
+          "type": "CallExpression",
+          "callee": {
+            "type": "Identifier",
+            "name": "round",
+            "loc": {
+              "start": {
+                "line": 115,
+                "column": 4
+              },
+              "end": {
+                "line": 115,
+                "column": 9
+              }
+            }
+          },
+          "arguments": [
+            {
+              "type": "Literal",
+              "value": 0.8,
+              "raw": "0.8",
+              "loc": {
+                "start": {
+                  "line": 115,
+                  "column": 10
+                },
+                "end": {
+                  "line": 115,
+                  "column": 13
+                }
+              }
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 115,
+              "column": 4
+            },
+            "end": {
+              "line": 115,
+              "column": 14
+            }
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 115,
+            "column": 0
+          },
+          "end": {
+            "line": 115,
+            "column": 14
+          }
+        }
+      },
+      "loc": {
+        "start": {
+          "line": 115,
+          "column": 0
+        },
+        "end": {
+          "line": 115,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "Identifier",
+          "name": "c",
+          "loc": {
+            "start": {
+              "line": 116,
+              "column": 0
+            },
+            "end": {
+              "line": 116,
+              "column": 1
+            }
+          }
+        },
+        "right": {
+          "type": "CallExpression",
+          "callee": {
+            "type": "Identifier",
+            "name": "eval",
+            "loc": {
+              "start": {
+                "line": 116,
+                "column": 4
+              },
+              "end": {
+                "line": 116,
+                "column": 8
+              }
+            }
+          },
+          "arguments": [
+            {
+              "type": "Literal",
+              "value": "string",
+              "raw": "\"string\"",
+              "loc": {
+                "start": {
+                  "line": 116,
+                  "column": 9
+                },
+                "end": {
+                  "line": 116,
+                  "column": 17
+                }
+              }
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 116,
+              "column": 4
+            },
+            "end": {
+              "line": 116,
+              "column": 18
+            }
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 116,
+            "column": 0
+          },
+          "end": {
+            "line": 116,
+            "column": 18
+          }
+        }
+      },
+      "loc": {
+        "start": {
+          "line": 116,
+          "column": 0
+        },
+        "end": {
+          "line": 116,
+          "column": 19
+        }
+      }
+    }
+  ],
+  "sourceType": "script",
+  "loc": {
+    "start": {
+      "line": 115,
+      "column": 0
+    },
+    "end": {
+      "line": 116,
+      "column": 19
+    }
+  }
+}

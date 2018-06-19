@@ -25,7 +25,7 @@
 // 	// Subtraction
 // var minus = 0
 // var minus = 2 - 1
-minus = 4 - 1
+// minus = 4 - 1
 
 // 	// Multiplication
 // var mult = 3 * 2
