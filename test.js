@@ -7,9 +7,9 @@
 
 ************************************/
 
-// var a = "Jin Huang", b = "Yu Li"
-// var lab = 429
-// var school = "WSU"
+var a = "Jin Huang", b = "Yu Li"
+var lab = 429
+var school = "WSU"
 
 
 

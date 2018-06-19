@@ -8,29 +8,34 @@ class onePathEnvironment{
 
     }
 
+    printEnvironment(){
+        console.log('\n-------Environment------')
+
+        for (var key in this._env) {
+            // check if the property/key is defined in the object itself, not in parent
+            if (this._env.hasOwnProperty(key)) {    
+                console.log(key + ":", this._env[key], "\n");
+            }
+        }
+        console.log("----------------------\n")
+    }
+
     get getVariable(){
         console.log(this._env[varName])
     }
 
     get getEnvironment(){
-        var str = 'Environment: /n'
-        var keys = Object.keys(this._env)
-        var values = Object.values(this._env)
-        keys.forEach(function (ele){
-            console.log(ele)
-        });
+        // var str = 'Environment: \n'
 
-        for ( var prop in this._env ) {
-           if ( this._env.hasOwnProperty( prop ) ) {
-               alert( this._env[prop] )
-           }
-        }
+        // console.log("\n------getEnvironment function start------")
+        // for (var key in this._env) {
+        //     // check if the property/key is defined in the object itself, not in parent
+        //     if (this._env.hasOwnProperty(key)) {    
+        //         console.log(key, this._env[key]);
+        //     }
+        // }
+        // console.log("------getEnvironment function end------\n")
 
-        this._env.forEach(function (ele){
-            console.log(ele)
-            // str += ele. + []
-        })
-        // this._env.forEach(KeyValuePair)
         return this._env
     }
 

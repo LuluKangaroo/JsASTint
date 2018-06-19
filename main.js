@@ -78,7 +78,7 @@ function eval_node(node, env) {
 
         case "VariableDeclarator":
             varName = eval_node(node.id, env)
-            varVal = evassl_node(node.init, env)
+            varVal = eval_node(node.init, env)
             // console.log("case2\n")
             env.setVariable(varName, varVal )
             return
@@ -90,10 +90,10 @@ function eval_node(node, env) {
         case "AssignmentExpression":
             varName = eval_node(node.left, env)
             varVal = eval_node(node.right, env)
-            // console.log("\nAssignmentExpression prints: ")
+            // console.log("\n-----AssignmentExpression prints------")
             // console.log(varName)
-            console.log('varVal: ')
-            console.log(varVal)
+            // console.log('varVal: ')
+            // console.log(varVal)
             // throw "die Here!"
             env.setVariable(varName, varVal)
             return
@@ -289,8 +289,8 @@ function eval_node(node, env) {
             })
 
             funcNode = new funcNodeRound(callName, callArgs)
-            console.log("\nfuncNode: " + funcNode.Expression)
-            console.log("\nfuncNode: " + funcNode)
+            // console.log("\n------funcNode.Expression------\n" + funcNode.Expression)
+            // console.log("\n------funcNode------\n" + funcNode)
 
 			return funcNode 
 
@@ -319,12 +319,15 @@ ASTs.body.forEach(function (ele) {
 
 });
 
-console.log("\nPrinting Environment: ")
+console.log("\n------Printing Environment------")
+console.log('getEnvironment getter function: \n')
 console.log(env.getEnvironment)
+console.log('\nprintEnvironment function: ')
+console.log(env.printEnvironment())
 //console.log("###################\n")
 // env.getVariable('lab')
 
  
-console.log(JSON.stringify(ASTs, null, 2))
+// console.log(JSON.stringify(ASTs, null, 2))
 // console.log("#########################\n")
 // console.log(typeof ASTs.body)

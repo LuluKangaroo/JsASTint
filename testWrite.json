@@ -1,0 +1,112 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "VariableDeclaration",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "a"
+          },
+          "init": {
+            "type": "Literal",
+            "value": "Jin Huang",
+            "raw": "\"Jin Huang\""
+          }
+        },
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "b"
+          },
+          "init": {
+            "type": "Literal",
+            "value": "Yu Li",
+            "raw": "\"Yu Li\""
+          }
+        }
+      ],
+      "kind": "var"
+    },
+    {
+      "type": "VariableDeclaration",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "lab"
+          },
+          "init": {
+            "type": "Literal",
+            "value": 429,
+            "raw": "429"
+          }
+        }
+      ],
+      "kind": "var"
+    },
+    {
+      "type": "VariableDeclaration",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "school"
+          },
+          "init": {
+            "type": "Literal",
+            "value": "WSU",
+            "raw": "\"WSU\""
+          }
+        }
+      ],
+      "kind": "var"
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "Identifier",
+          "name": "a"
+        },
+        "right": {
+          "type": "CallExpression",
+          "callee": {
+            "type": "Identifier",
+            "name": "math"
+          },
+          "arguments": [
+            {
+              "type": "Literal",
+              "value": 0.8,
+              "raw": "0.8"
+            },
+            {
+              "type": "Literal",
+              "value": 234,
+              "raw": "234"
+            },
+            {
+              "type": "Literal",
+              "value": 34,
+              "raw": "34"
+            },
+            {
+              "type": "Literal",
+              "value": 34,
+              "raw": "34"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "sourceType": "script"
+}
