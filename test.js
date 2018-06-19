@@ -7,9 +7,9 @@
 
 ************************************/
 
-var a = "Jin Huang", b = "Yu Li"
-var lab = 429
-var school = "WSU"
+// var a = "Jin Huang", b = "Yu Li"
+// var lab = 429
+// var school = "WSU"
 
 
 
@@ -25,7 +25,7 @@ var school = "WSU"
 // 	// Subtraction
 // var minus = 0
 // var minus = 2 - 1
-// minus = 4 - 1
+minus = 4 - 1
 
 // 	// Multiplication
 // var mult = 3 * 2
@@ -111,7 +111,9 @@ var school = "WSU"
 /**************************
 	Miscellaneous Tests
 ***************************/
-a = math(0.8, 234, 34, 34);
+// a = math(0.8, 234, 34, 34);
+b = round(0.8);
+c = eval("string");
 // empty = null-
 
 // var doub = 2.5

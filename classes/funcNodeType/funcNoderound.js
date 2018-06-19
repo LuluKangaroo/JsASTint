@@ -2,7 +2,7 @@ class funcNoderound{
     constructor(name, args){
         this._name = name
         this._args = args
-        
+
         // args.forEach(function (ele){
         // 	this._args.push(ele)
         // })
@@ -25,7 +25,7 @@ class funcNoderound{
     		// do NOT add () at end of call
     		makeExpression += ele.Expression + ", "
     	})
-        return this._name + this._args // makeExpression + ")"
+        return makeExpression + ")"
     }
 };
 

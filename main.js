@@ -32,19 +32,23 @@ var srcCode = fs.readFileSync(fileName, 'utf-8');
 
 // Parsing given file
 var esprima = require('esprima');
-var ASTs = esprima.parseScript(srcCode);
+var ASTs = esprima.parseScript(srcCode, {loc: true});
 
 // Creating environment for paths
 var env = new onePathEnvironment()
 
+
+var fs2 = require('fs');
 // Writing Parsed AST to JSON file
-fs.writeFile('testWrite.JSON', JSON.stringify(ASTs, null, 2), (Error) => {
+
+fs2.writeFile('testWriteNew.JSON', JSON.stringify(ASTs, null, 2), function(Error){
     if (Error) throw Error;
 
     console.log('Parsed trees saved.')
 });
 
-
+console.log('exit here!!!!!!!');
+// exit();
 
 /******************************************************
     Eval Function
@@ -277,7 +281,6 @@ function eval_node(node, env) {
 			
 		case "CallExpression":
 			callName = eval_node(node.callee, env)
-
             // Creating list to hold function call parameters
 			var callArgs = [] // New list of arguments after eval_node
 			var argList = node.arguments
@@ -288,11 +291,50 @@ function eval_node(node, env) {
                 callArgs.push(arg);
             })
 
-            funcNode = new funcNodeRound(callName, callArgs)
+            // funcNode = new funcNodeRound(callName, callArgs)
             // console.log("\n------funcNode.Expression------\n" + funcNode.Expression)
             // console.log("\n------funcNode------\n" + funcNode)
 
-			return funcNode 
+            switch (callName){
+                // CHANGE switch statement
+                // Checking if callName is a function that is build in OR user declared
+                // Create new symbolic value for userDeclared function (specified)
+                // 
+                case "round":
+                    // env.expPlus(left, right)
+                    funcNode = new funcNodeRound(callName, callArgs)
+                    return funcNode
+
+                case "eval":
+                    funcNode = new funcNodeRound(callName, callArgs)
+                    return funcNode
+
+                case "require":
+                    funcNode = new funcNodeRound(callName, callArgs)
+                    return funcNode
+
+                default:
+                    console.log('\n-------------')
+                    console.log("New function name: " + callName)
+                    console.log("STOP: Here is an new Call Expression You need to add on!!!!")
+                    // process.exit()
+                    // return
+            }            
+
+			return
+
+        case "MemberExpression":
+            // Create new symbolic object for MemberExpression representation
+            // 
+
+            return;
+
+        case "FunctionDeclaration":
+            // First parsing all Function Declarations before parsing through rest of code
+            // Build second dictionary with all USER DECLARED functions
+            // Have KEY as function NAME, and VALUE as blockStatement content within function
+
+            return;
 
         case "WhileStatement":
             conditional = eval_node(node.test, env)
@@ -301,9 +343,12 @@ function eval_node(node, env) {
             return;
 
         default:
-            console.log(ins_node)
+            console.log('\n-------------')
+            console.log("New case: " + ins_node + " At: " + node.loc.start.line)
             // console.log("!!!!!!!!\n")
             console.log("Hey! I don't Know!!!!!")
+            console.log("Stop: need to add new case :)")
+            // process.exit()
 
     }
 }
@@ -319,11 +364,11 @@ ASTs.body.forEach(function (ele) {
 
 });
 
-console.log("\n------Printing Environment------")
-console.log('getEnvironment getter function: \n')
-console.log(env.getEnvironment)
-console.log('\nprintEnvironment function: ')
-console.log(env.printEnvironment())
+// console.log("\n------Printing Environment------")
+// // console.log('getEnvironment getter function: \n')
+// // console.log(env.getEnvironment)
+// console.log('\nprintEnvironment function: ')
+// console.log(env.printEnvironment())
 //console.log("###################\n")
 // env.getVariable('lab')
 
