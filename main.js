@@ -243,17 +243,36 @@ function eval_node(node, env) {
         case "UnaryExpression":
             opertor = node.operator
             // left = eval_node(node.left, env)
-            // right = eval_node(node.right, env)
+            right = eval_node(node.right, env)
 
             switch (opertor){
                 case "+":
-                    // env.expPlus(left, right)
-                    // opNode = new opNodeAnd(left, right)
-                    // return opNode
+                    opNode = new opNodeIncre(right)
+                    return opNode
 
                 case "-":
-                    // opNode = new opNodeOr(left, right)
-                    // return opNode
+                    opNode = new opNodeDecre(right)
+                    return opNode
+
+                case "~":
+                    opNode = new opNodeComplement(right)
+                    return opNode
+
+                case "!":
+                    opNode = new opNodeNot(right)
+                    return opNode
+
+                case "delete":
+                    opNode = new opNodeDel(right)
+                    return opNode
+
+                case "void":
+                    opNode = new opNodeVoid(right)
+                    return opNode
+
+                case "typeof":
+                    opNode = new opNodeTypeOf(right)
+                    return opNode
 
                 default:
                     throw "STOP: Here is an new Unary Expression You need to add on!!!!"
@@ -262,9 +281,12 @@ function eval_node(node, env) {
             return
 
         case "Identifier":
+            /************************************
+                BUG: some identifiers as values, are NOT printed out
+                    when environment is printed out b/c IDENTIFIER without
+                    its own class and doesn't have getter Expression
+            *************************************/
             varId = node.name
-            // console.log(variable + "=")
-            // console.log("case3\n")
             return varId
 
         case "Literal":
@@ -352,7 +374,7 @@ ASTs.body.forEach(function (ele) {
     // console.log(ele.type)
     // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$")
 
-    // eval_node(ele,env)
+    eval_node(ele,env)
 
 });
 
@@ -360,7 +382,7 @@ console.log("\n------Printing Environment------")
 // console.log('getEnvironment getter function: \n')
 // console.log(env.getEnvironment)
 console.log('\nprintEnvironment function: ')
-// console.log(env.printEnvironment())
+console.log(env.printEnvironment())
 //console.log("###################\n")
 // env.getVariable('lab')
 

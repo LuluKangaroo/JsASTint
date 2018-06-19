@@ -7,10 +7,11 @@
 
 ************************************/
 
-// var a = "Jin Huang", b = "Yu Li"
-// var lab = 429
-// var school = "WSU"
+var a = "Jin Huang", b = "Yu Li"
+var lab = 429
+var school = "WSU"
 
+whatIf = anotherWord
 
 
 /*******************************
@@ -42,15 +43,19 @@
 	Testing Logical Operations
 **********************************/
 
-// boolean1 = true
+boolean1 = true
 
-// boolean2 = false
+boolean2 = false
 
-// bin = boolean1 && boolean2
+bin = boolean1 && boolean2
 
-// bin = boolean1 || boolean2
+bin2 = boolean1 || boolean2
 
+bin3 = 45 || 69
 
+bin4 = true || false
+
+bin5 = b || a
 
 /******************************
 	Testing Unary Operations
@@ -112,8 +117,8 @@
 	Miscellaneous Tests
 ***************************/
 // a = math(0.8, 234, 34, 34);
-b = round(0.8);
-c = eval("string");
+// b = round(0.8);
+// c = eval("string");
 // empty = null-
 
 // var doub = 2.5
