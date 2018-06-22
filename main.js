@@ -31,7 +31,8 @@ const funcNodeRound = require('./classes/funcNodeType/funcNoderound');
 /*********************
     Program Start
 **********************/
-
+// global array for user defined classes 
+var userClass = [];
 // Reading file input
 var fs = require('fs');
 var fileName = process.argv[2];
@@ -315,6 +316,10 @@ function eval_node(node, env) {
 			
 		case "CallExpression":
 			callName = eval_node(node.callee, env)
+			// if the call name is a user defined function:
+			if userClass.contains(callName) {
+				console.log("HEY! It's a user-defined function!")
+			}
             // Creating list to hold function call parameters
 			var callArgs = [] // New list of arguments after eval_node
 			var argList = node.arguments
@@ -373,13 +378,18 @@ function eval_node(node, env) {
         case "FunctionDeclaration":
             // First parsing all Function Declarations before parsing through rest of code
             // Build second dictionary with all USER DECLARED functions
+			var id = node.id
+			userClass.push(id)
             // Have KEY as function NAME, and VALUE as blockStatement content within function
+<<<<<<< HEAD
+=======
 
             // id = eval_node(node.id, env)
             // funcParams = eval_node(node.params, env)
             funcBody = eval_node(node.body, env)
 
 
+>>>>>>> 916dcb7dbafac72473b19a6df53c2b200fe00dd9
             return;
 
         case "WhileStatement":
