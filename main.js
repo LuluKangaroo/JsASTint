@@ -3,6 +3,7 @@
 **************************/
 const onePathEnvironment = require('./classes/onePathEnvironment');
 const leafNodeLiteral = require('./classes/leafNodeType/leafNodeLiteral');
+
 const opNodePlus = require('./classes/opNodeType/opNodePlus');
 const opNodeMinus = require('./classes/opNodeType/opNodeMinus');
 const opNodeMult = require('./classes/opNodeType/opNodeMult');
@@ -10,6 +11,10 @@ const opNodeDiv = require('./classes/opNodeType/opNodeDiv');
 const opNodeAnd = require('./classes/opNodeType/opNodeAnd');
 const opNodeOr = require('./classes/opNodeType/opNodeOr');
 const opNodeInstance = require('./classes/opNodeType/opNodeInstance');
+const opNodeMember = require('./classes/opNodeType/opNodeMember');
+
+const blockStatementNode = require('./classes/blockStatementNode');
+
 const funcNodeRound = require('./classes/funcNodeType/funcNoderound');
 
 // var glob = require( 'glob' )
@@ -308,7 +313,7 @@ function eval_node(node, env) {
 
             switch (callName){
                 // CHANGE switch statement
-                // Checking if callName is a function that is build in OR user declared
+                // Checking if callName is a function that is built in OR user declared
                 // Create new symbolic value for userDeclared function (specified)
                 // 
                 case "round":
@@ -336,18 +341,28 @@ function eval_node(node, env) {
 
         case "MemberExpression":
             // Create new symbolic object for MemberExpression representation
-            
-            // Parts within MemberExpression:
-            //      Computed (boolean)
-            //      Object (class/object called)
-            //      Property (method/function)
+            object = eval_node(node.object, env);
+            property = eval_node(node.property, env);
 
-            return;
+            // console.log("\nObject type print: " + typeof object)
+            // console.log("Object print: " + object)
+            // console.log("Property type print: " + typeof property)
+            // console.log("Property print: " + property)
+
+            memberObject = new opNodeMember(object, property)
+            // console.log("\nMember object: ", JSON.stringify(memberObject, null, 2))
+
+
+            return memberObject;
 
         case "FunctionDeclaration":
             // First parsing all Function Declarations before parsing through rest of code
             // Build second dictionary with all USER DECLARED functions
             // Have KEY as function NAME, and VALUE as blockStatement content within function
+
+            // id = eval_node(node.id, env)
+            // funcParams = eval_node(node.params, env)
+            // funcBody = eval_node(node.body, env)
 
             return;
 
@@ -368,28 +383,22 @@ function eval_node(node, env) {
     }
 }
 
-ASTs.body.forEach(function (ele) {
+ASTsWithLoc.body.forEach(function (ele) {
     // console.log("#########################\n")
     // console.log(JSON.stringify(ele, null, 2))
     // console.log(typeof ele)
     // console.log(ele.type)
     // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$")
 
-    // eval_node(ele,env)
+    eval_node(ele,env)
 
 });
-
-// console.log("\n------Printing Environment------")
-// console.log('\nprintEnvironment function: ')
-// console.log(env.printEnvironment())
-
-// console.log('getEnvironment getter function: \n')
-// console.log(env.getEnvironment)
-//console.log("###################\n")
-// env.getVariable('lab')
 
 
 console.log("-------- Generated AST --------")
 console.log(JSON.stringify(ASTs, null, 2))
-// console.log("#########################\n")
-// console.log(typeof ASTs.body)
+
+
+// console.log("\n------Printing Environment------")
+// console.log('\nprintEnvironment function: ')
+// console.log(env.printEnvironment())

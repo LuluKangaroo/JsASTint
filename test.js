@@ -101,7 +101,22 @@
 	Member Declaration Test
 *******************************/
 	// Examples taken from Shoptimate main.js
-var data = self.data;
+// var data = self.data
+// var Request = require("request").Request;
+// tabs.on('ready', function(tab){});
+
+
+
+/******************************
+	Block Statement Test
+*******************************/
+
+function short(param) {
+	a = hello;
+	b = 2 + 4;
+	asdf = "asdf";
+}
+
 
 
 
@@ -111,6 +126,13 @@ var data = self.data;
 
 	// Taken from realExampleTest/main.js
 	// (main file for Shoptimate extension)
+
+// function showNotification(worker, url) {
+//     worker.port.emit("showNotification", {'url' : url});
+// }
+
+// showNotification(fakeWorker, fakeUrl)
+
 // function generateNotificationUrl(site, sku) {
 //     if (!site || !sku) {
 //         return null;
