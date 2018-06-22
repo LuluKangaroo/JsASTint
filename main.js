@@ -32,7 +32,8 @@ var srcCode = fs.readFileSync(fileName, 'utf-8');
 
 // Parsing given file
 var esprima = require('esprima');
-var ASTs = esprima.parseScript(srcCode, {loc: true});
+var ASTs = esprima.parseScript(srcCode);
+var ASTsWithLoc = esprima.parseScript(srcCode, {loc: true});
 
 // Creating environment for paths
 var env = new onePathEnvironment()
@@ -43,7 +44,7 @@ var fs2 = require('fs');
 var srcFileName = fileName.substring(fileName.indexOf('/'), fileName.indexOf('.'))
 var treeFileName = srcFileName + ".JSON"
 
-fs2.writeFile('./parsedASTs/' + treeFileName, JSON.stringify(ASTs, null, 2), (Error) => {
+fs2.writeFile('./parsedASTs/' + treeFileName, JSON.stringify(ASTsWithLoc, null, 2), (Error) => {
     if (Error) throw Error;
 
     console.log('Parsed tree saved to file: ')
@@ -374,7 +375,7 @@ ASTs.body.forEach(function (ele) {
     // console.log(ele.type)
     // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$")
 
-    eval_node(ele,env)
+    // eval_node(ele,env)
 
 });
 
@@ -386,7 +387,7 @@ console.log(env.printEnvironment())
 //console.log("###################\n")
 // env.getVariable('lab')
 
- 
-// console.log(JSON.stringify(ASTs, null, 2))
+
+console.log(JSON.stringify(ASTs, null, 2))
 // console.log("#########################\n")
 // console.log(typeof ASTs.body)

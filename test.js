@@ -7,11 +7,11 @@
 
 ************************************/
 
-var a = "Jin Huang", b = "Yu Li"
-var lab = 429
-var school = "WSU"
+// var a = "Jin Huang", b = "Yu Li"
+// var lab = 429
+// var school = "WSU"
 
-whatIf = anotherWord
+// whatIf = anotherWord
 
 
 /*******************************
@@ -43,26 +43,26 @@ whatIf = anotherWord
 	Testing Logical Operations
 **********************************/
 
-boolean1 = true
+// boolean1 = true
 
-boolean2 = false
+// boolean2 = false
 
-bin = boolean1 && boolean2
+// bin = boolean1 && boolean2
 
-bin2 = boolean1 || boolean2
+// bin2 = boolean1 || boolean2
 
-bin3 = 45 || 69
+// bin3 = 45 || 69
 
-bin4 = true || false
+// bin4 = true || false
 
-bin5 = b || a
+// bin5 = b || a
 
 /******************************
 	Testing Unary Operations
 *******************************/
 
-// bin = !boolean1
-
+bin = !(boolean1)
+bin2 = !boolean2
 
 
 /*************************************
