@@ -336,7 +336,11 @@ function eval_node(node, env) {
 
         case "MemberExpression":
             // Create new symbolic object for MemberExpression representation
-            // 
+            
+            // Parts within MemberExpression:
+            //      Computed (boolean)
+            //      Object (class/object called)
+            //      Property (method/function)
 
             return;
 
