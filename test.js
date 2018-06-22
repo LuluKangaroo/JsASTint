@@ -57,12 +57,15 @@
 
 // bin5 = b || a
 
+
+
 /******************************
 	Testing Unary Operations
 *******************************/
 
-bin = !(boolean1)
-bin2 = !boolean2
+// bin = !(boolean1)
+// bin2 = !boolean2
+
 
 
 /*************************************
@@ -82,35 +85,36 @@ bin2 = !boolean2
 	//test1 = -1
 //}
 
-// 	// Less than
-// if (test2 < 6) {
-// 	test2 = 1
-// }else{
-// 	test2 = 0
-// }
-
-// 	// Greater than or Equal to
-// if (test3 >= 15) {
-// 	test3 = 1
-// }else{
-// 	test3 = 0
-// }
-
-// 	// Less than or Equal to
-// if (test4 <= 8) {
-// 	test4 = 1
-// }else{
-// 	test4 = 0
-// }
 
 
 /**************************
 	Loop Tests
 ***************************/
-// While loop
+	// While loop
 // while(counter < 2){
 // 	counter ++;
 // }
+
+
+
+/*******************************
+	Function Declaration Test
+********************************/
+
+	// Taken from realExampleTest/main.js
+	// (main file for Shoptimate extension)
+function generateNotificationUrl(site, sku) {
+    if (!site || !sku) {
+        return null;
+    }
+    // Create the iframe URL
+    var v = "1";
+    var country = "xx";
+    var locale = "xx";
+    return "http://toolbar.shoptimate.com/v" + v + "/" + country + "/" + locale + "/" + site + "/" + sku + "/firefox.html?extensionversion=" + getVersion();
+}
+
+
 
 
 /**************************

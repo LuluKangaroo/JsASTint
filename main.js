@@ -306,10 +306,6 @@ function eval_node(node, env) {
                 callArgs.push(arg);
             })
 
-            // funcNode = new funcNodeRound(callName, callArgs)
-            // console.log("\n------funcNode.Expression------\n" + funcNode.Expression)
-            // console.log("\n------funcNode------\n" + funcNode)
-
             switch (callName){
                 // CHANGE switch statement
                 // Checking if callName is a function that is build in OR user declared
@@ -379,15 +375,17 @@ ASTs.body.forEach(function (ele) {
 
 });
 
-console.log("\n------Printing Environment------")
+// console.log("\n------Printing Environment------")
+// console.log('\nprintEnvironment function: ')
+// console.log(env.printEnvironment())
+
 // console.log('getEnvironment getter function: \n')
 // console.log(env.getEnvironment)
-console.log('\nprintEnvironment function: ')
-console.log(env.printEnvironment())
 //console.log("###################\n")
 // env.getVariable('lab')
 
 
+console.log("-------- Generated AST --------")
 console.log(JSON.stringify(ASTs, null, 2))
 // console.log("#########################\n")
 // console.log(typeof ASTs.body)
