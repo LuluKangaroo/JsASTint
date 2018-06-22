@@ -112,9 +112,10 @@
 *******************************/
 
 function short(param) {
-	a = hello;
-	b = 2 + 4;
-	asdf = "asdf";
+	var a = hello, c = ohNo;
+	var single = 0;
+	b = 2, d = 3;
+	er = 1;
 }
 
 

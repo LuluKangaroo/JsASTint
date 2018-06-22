@@ -15,6 +15,8 @@ const opNodeMember = require('./classes/opNodeType/opNodeMember');
 
 const blockStatementNode = require('./classes/blockStatementNode');
 
+const expNodeAssignment = require('./classes/expNodeType/expNodeAssignment');
+
 const funcNodeRound = require('./classes/funcNodeType/funcNoderound');
 
 // var glob = require( 'glob' )
@@ -73,16 +75,6 @@ function eval_node(node, env) {
 
     switch (String(ins_node)) {
         case "VariableDeclaration":
-            // console.log(JSON.stringify(node.declarations, null,2))
-            // console.log(JSON.stringify(typeof node.declarations, null,2))
-            // console.log("The First Del")
-            // console.log(JSON.stringify(node.declarations[0], null,2))
-            // console.log(JSON.stringify(node.declarations[0].type, null,2))
-            // console.log(JSON.stringify(node.declarations[0].id, null,2))
-            // console.log(JSON.stringify(node.declarations[0].init, null,2))
-            // console.log("The 2nd Del")
-            // console.log(JSON.stringify(node.declarations[1], null,2))
-            // eval_node(node.declarations[0])
             node.declarations.forEach(function (each_declarator){
                 eval_node(each_declarator,env)
             });
@@ -91,23 +83,21 @@ function eval_node(node, env) {
         case "VariableDeclarator":
             varName = eval_node(node.id, env)
             varVal = eval_node(node.init, env)
-            // console.log("case2\n")
             env.setVariable(varName, varVal )
             return
 
         case "ExpressionStatement":
-            eval_node(node.expression, env)
-            return
+            expressState = eval_node(node.expression, env)
+            return expressState
 
         case "AssignmentExpression":
             varName = eval_node(node.left, env)
             varVal = eval_node(node.right, env)
-            // console.log("\n-----AssignmentExpression prints------")
-            // console.log(varName)
-            // console.log('varVal: ')
-            // console.log(varVal)
-            // throw "die Here!"
             env.setVariable(varName, varVal)
+            assignExp = new expNodeAssignment(varName, varVal)
+            return assignExp
+
+        case "SequenceExpression":
             return
 
         /****************************************
@@ -286,6 +276,30 @@ function eval_node(node, env) {
             }
             return
 
+        case "BlockStatement":
+                // ISSUE: Need to return types of objects to add the lines
+                //      of statements to a list for the BlockStatement body
+                // Objects that need creating: ASSIGNMENT EXPRESSION,
+                //     SequenceExpression (CREATE new case for this :c )
+                //     VariableDeclaration (object should use ARRAY to store declarations)
+
+            var statementLines = []
+            var listOfLines = node.body
+
+            listOfLines.forEach(function (ele) {
+                console.log("\nele: ", ele);
+                singleStatement = eval_node(ele, env)
+                console.log("\nStatement type: ", typeof singleStatement)
+                statementLines.push(singleStatement);
+            })
+
+            console.log("Printing statementLines")
+            for (var i = 0; i < statementLines.length; i++) {
+                console.log("cry ", statementLines[i]);
+            }
+
+            return;
+
         case "Identifier":
             /************************************
                 BUG: some identifiers as values, are NOT printed out
@@ -337,7 +351,8 @@ function eval_node(node, env) {
                     // return
             }            
 
-			return
+                    funcNode = new funcNodeRound(callName, callArgs)
+			return funcNode
 
         case "MemberExpression":
             // Create new symbolic object for MemberExpression representation
@@ -362,7 +377,8 @@ function eval_node(node, env) {
 
             // id = eval_node(node.id, env)
             // funcParams = eval_node(node.params, env)
-            // funcBody = eval_node(node.body, env)
+            funcBody = eval_node(node.body, env)
+
 
             return;
 
@@ -395,8 +411,14 @@ ASTsWithLoc.body.forEach(function (ele) {
 });
 
 
-console.log("-------- Generated AST --------")
-console.log(JSON.stringify(ASTs, null, 2))
+ASTs.body.forEach(function (ele) {
+    // eval_node(ele,env)
+
+});
+
+
+// console.log("-------- Generated AST --------")
+// console.log(JSON.stringify(ASTs, null, 2))
 
 
 // console.log("\n------Printing Environment------")
