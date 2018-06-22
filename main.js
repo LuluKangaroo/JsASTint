@@ -256,7 +256,7 @@ function eval_node(node, env) {
                     return opNode
 
                 case "~":
-                    opNode = new opNodeComplement(right)
+                    opNode = new opNodeComple(right)
                     return opNode
 
                 case "!":
