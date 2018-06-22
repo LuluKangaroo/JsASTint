@@ -97,23 +97,30 @@
 
 
 
+/******************************
+	Member Declaration Test
+*******************************/
+	// Examples taken from Shoptimate main.js
+var data = self.data;
+
+
+
 /*******************************
 	Function Declaration Test
 ********************************/
 
 	// Taken from realExampleTest/main.js
 	// (main file for Shoptimate extension)
-function generateNotificationUrl(site, sku) {
-    if (!site || !sku) {
-        return null;
-    }
-    // Create the iframe URL
-    var v = "1";
-    var country = "xx";
-    var locale = "xx";
-    return "http://toolbar.shoptimate.com/v" + v + "/" + country + "/" + locale + "/" + site + "/" + sku + "/firefox.html?extensionversion=" + getVersion();
-}
-
+// function generateNotificationUrl(site, sku) {
+//     if (!site || !sku) {
+//         return null;
+//     }
+//     // Create the iframe URL
+//     var v = "1";
+//     var country = "xx";
+//     var locale = "xx";
+//     return "http://toolbar.shoptimate.com/v" + v + "/" + country + "/" + locale + "/" + site + "/" + sku + "/firefox.html?extensionversion=" + getVersion();
+// }
 
 
 
