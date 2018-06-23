@@ -191,176 +191,6 @@
                 "column": 16
               }
             }
-          },
-          {
-            "type": "ExpressionStatement",
-            "expression": {
-              "type": "SequenceExpression",
-              "expressions": [
-                {
-                  "type": "AssignmentExpression",
-                  "operator": "=",
-                  "left": {
-                    "type": "Identifier",
-                    "name": "b",
-                    "loc": {
-                      "start": {
-                        "line": 117,
-                        "column": 1
-                      },
-                      "end": {
-                        "line": 117,
-                        "column": 2
-                      }
-                    }
-                  },
-                  "right": {
-                    "type": "Literal",
-                    "value": 2,
-                    "raw": "2",
-                    "loc": {
-                      "start": {
-                        "line": 117,
-                        "column": 5
-                      },
-                      "end": {
-                        "line": 117,
-                        "column": 6
-                      }
-                    }
-                  },
-                  "loc": {
-                    "start": {
-                      "line": 117,
-                      "column": 1
-                    },
-                    "end": {
-                      "line": 117,
-                      "column": 6
-                    }
-                  }
-                },
-                {
-                  "type": "AssignmentExpression",
-                  "operator": "=",
-                  "left": {
-                    "type": "Identifier",
-                    "name": "d",
-                    "loc": {
-                      "start": {
-                        "line": 117,
-                        "column": 8
-                      },
-                      "end": {
-                        "line": 117,
-                        "column": 9
-                      }
-                    }
-                  },
-                  "right": {
-                    "type": "Literal",
-                    "value": 3,
-                    "raw": "3",
-                    "loc": {
-                      "start": {
-                        "line": 117,
-                        "column": 12
-                      },
-                      "end": {
-                        "line": 117,
-                        "column": 13
-                      }
-                    }
-                  },
-                  "loc": {
-                    "start": {
-                      "line": 117,
-                      "column": 8
-                    },
-                    "end": {
-                      "line": 117,
-                      "column": 13
-                    }
-                  }
-                }
-              ],
-              "loc": {
-                "start": {
-                  "line": 117,
-                  "column": 1
-                },
-                "end": {
-                  "line": 117,
-                  "column": 13
-                }
-              }
-            },
-            "loc": {
-              "start": {
-                "line": 117,
-                "column": 1
-              },
-              "end": {
-                "line": 117,
-                "column": 14
-              }
-            }
-          },
-          {
-            "type": "ExpressionStatement",
-            "expression": {
-              "type": "AssignmentExpression",
-              "operator": "=",
-              "left": {
-                "type": "Identifier",
-                "name": "er",
-                "loc": {
-                  "start": {
-                    "line": 118,
-                    "column": 1
-                  },
-                  "end": {
-                    "line": 118,
-                    "column": 3
-                  }
-                }
-              },
-              "right": {
-                "type": "Literal",
-                "value": 1,
-                "raw": "1",
-                "loc": {
-                  "start": {
-                    "line": 118,
-                    "column": 6
-                  },
-                  "end": {
-                    "line": 118,
-                    "column": 7
-                  }
-                }
-              },
-              "loc": {
-                "start": {
-                  "line": 118,
-                  "column": 1
-                },
-                "end": {
-                  "line": 118,
-                  "column": 7
-                }
-              }
-            },
-            "loc": {
-              "start": {
-                "line": 118,
-                "column": 1
-              },
-              "end": {
-                "line": 118,
-                "column": 8
-              }
-            }
           }
         ],
         "loc": {
@@ -369,7 +199,7 @@
             "column": 22
           },
           "end": {
-            "line": 119,
+            "line": 117,
             "column": 1
           }
         }
@@ -383,7 +213,7 @@
           "column": 0
         },
         "end": {
-          "line": 119,
+          "line": 117,
           "column": 1
         }
       }
@@ -396,7 +226,7 @@
       "column": 0
     },
     "end": {
-      "line": 119,
+      "line": 117,
       "column": 1
     }
   }

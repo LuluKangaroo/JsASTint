@@ -114,11 +114,7 @@
 function short(param) {
 	var a = hello, c = ohNo;
 	var single = 0;
-	b = 2, d = 3;
-	er = 1;
 }
-
-
 
 
 /*******************************

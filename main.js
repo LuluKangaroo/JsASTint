@@ -16,6 +16,7 @@ const opNodeMember = require('./classes/opNodeType/opNodeMember');
 const blockStatementNode = require('./classes/blockStatementNode');
 
 const expNodeAssignment = require('./classes/expNodeType/expNodeAssignment');
+const sequenceExpNode = require('./classes/expNodeType/sequenceExpNode');
 
 const funcNodeRound = require('./classes/funcNodeType/funcNoderound');
 
@@ -99,7 +100,16 @@ function eval_node(node, env) {
             return assignExp
 
         case "SequenceExpression":
-            return
+            var expStates = node.expressions;
+            var expArray = [];
+
+            expStates.forEach(function (ele){
+                oneExp = eval_node(ele, env)
+                expArray.push(oneExp)
+            })
+            
+            seqNode = new sequenceExpNode(expArray)
+            return seqNode
 
         /****************************************
             Binary Expression Cases
@@ -316,10 +326,12 @@ function eval_node(node, env) {
 			
 		case "CallExpression":
 			callName = eval_node(node.callee, env)
+
 			// if the call name is a user defined function:
-			if userClass.contains(callName) {
-				console.log("HEY! It's a user-defined function!")
-			}
+			// if userClass.includes(callName) {
+			// 	console.log("HEY! It's a user-defined function!")
+			// }
+
             // Creating list to hold function call parameters
 			var callArgs = [] // New list of arguments after eval_node
 			var argList = node.arguments
@@ -381,15 +393,10 @@ function eval_node(node, env) {
 			var id = node.id
 			userClass.push(id)
             // Have KEY as function NAME, and VALUE as blockStatement content within function
-<<<<<<< HEAD
-=======
 
             // id = eval_node(node.id, env)
             // funcParams = eval_node(node.params, env)
             funcBody = eval_node(node.body, env)
-
-
->>>>>>> 916dcb7dbafac72473b19a6df53c2b200fe00dd9
             return;
 
         case "WhileStatement":
