@@ -111,10 +111,10 @@
 	Block Statement Test
 *******************************/
 
-function short(param) {
-	var a = hello, c = ohNo;
-	var single = 0;
-}
+// function short(param) {
+// 	var a = hello, c = ohNo;
+// 	var single = 0;
+// }
 
 
 /*******************************
@@ -141,6 +141,39 @@ function short(param) {
 //     return "http://toolbar.shoptimate.com/v" + v + "/" + country + "/" + locale + "/" + site + "/" + sku + "/firefox.html?extensionversion=" + getVersion();
 // }
 
+
+
+
+/*******************************
+	Example Source Test
+// ********************************/
+
+	function exportProfile() {
+		try {
+			var file = this.filePicker(
+				'modeSave',
+				this.getStringBundle().getString('exportProfile'),
+				this.getProfileLabel(this.getProfileIndex())+'.txt'
+			);
+			// if(file) {
+				var fos = Components.classes['@mozilla.org/network/file-output-stream;1'].
+										createInstance(Components.interfaces.nsIFileOutputStream);
+				fos.init(file, 0x02 | 0x08 | 0x20, 0664, 0); // write, create, truncate
+
+				var os = Components.classes['@mozilla.org/intl/converter-output-stream;1']
+							.createInstance(Components.interfaces.nsIConverterOutputStream);
+				os.init(fos, 'UTF-8', 4096, Components.interfaces.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER);
+
+				var profileIndex = this.getProfileIndex();
+				this.writeProfile(os, profileIndex);
+
+				os.close();
+				fos.close();
+			// }
+		} catch(e) {
+			this.log(e);
+		}
+	}
 
 
 /**************************

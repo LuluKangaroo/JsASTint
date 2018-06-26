@@ -12,8 +12,11 @@ const opNodeAnd = require('./classes/opNodeType/opNodeAnd');
 const opNodeOr = require('./classes/opNodeType/opNodeOr');
 const opNodeInstance = require('./classes/opNodeType/opNodeInstance');
 const opNodeMember = require('./classes/opNodeType/opNodeMember');
+const opNodeBitOr = require('./classes/opNodeType/opNodeBitOr');
 
 const blockStatementNode = require('./classes/blockStatementNode');
+const catchClauseNode = require('./classes/catchClauseNode');
+const tryStateNode = require('./classes/tryStateNode');
 
 const expNodeAssignment = require('./classes/expNodeType/expNodeAssignment');
 const sequenceExpNode = require('./classes/expNodeType/sequenceExpNode');
@@ -73,6 +76,9 @@ function eval_node(node, env) {
         throw "Error: Please Check the env!!!"
     }
 
+    if(node == null){
+        return null
+    }
     var ins_node = node.type
 
     switch (String(ins_node)) {
@@ -298,7 +304,7 @@ function eval_node(node, env) {
             var listOfLines = node.body
 
             listOfLines.forEach(function (ele) {
-                console.log("\nele: ", ele);
+                // console.log("\nele: ", ele);
                 singleStatement = eval_node(ele, env)
                 console.log("\nStatement type: ", typeof singleStatement)
                 statementLines.push(singleStatement);
@@ -306,7 +312,7 @@ function eval_node(node, env) {
 
             console.log("Printing statementLines")
             for (var i = 0; i < statementLines.length; i++) {
-                console.log("cry ", statementLines[i]);
+                console.log(statementLines[i]);
             }
 
             return;
@@ -362,8 +368,8 @@ function eval_node(node, env) {
 
                 default:
                     console.log('\n-------------')
-                    console.log("New function name: " + callName)
-                    console.log("STOP: Here is an new Call Expression You need to add on!!!!")
+                    console.log("\nNew function name: " + callName+ " At: " + node.loc.start.line)
+                    // console.log("STOP: Here is an new Call Expression You need to add on!!!!")
                     // process.exit()
                     // return
             }            
@@ -382,10 +388,12 @@ function eval_node(node, env) {
             // console.log("Property print: " + property)
 
             memberObject = new opNodeMember(object, property)
-            // console.log("\nMember object: ", JSON.stringify(memberObject, null, 2))
-
-
+            console.log("\nMember object: ", JSON.stringify(memberObject, null, 2))
             return memberObject;
+
+
+        case "ThisExpression":
+            return "this";
 
         case "FunctionDeclaration":
             // First parsing all Function Declarations before parsing through rest of code
@@ -399,6 +407,24 @@ function eval_node(node, env) {
             funcBody = eval_node(node.body, env)
             return;
 
+        case "TryStatement":
+            var tryBlock = eval_node(node.block, env)
+            var catchHand = eval_node(node.handler, env)
+            var final = eval_node(node.finalizer, env)
+
+            var tryNode = new tryStateNode(tryBlock, catchHand, final)
+            console.log("======= try statement ======")
+            console.log(tryNode)
+            console.log("============================")
+            return tryNode;
+
+        case "CatchClause":
+            var paramCase = eval_node(node.param, env)
+            var blockBody = eval_node(node.body, env)
+
+            var catchNode = new catchClauseNode(paramCase, blockBody)
+            return catchNode;
+
         case "WhileStatement":
             conditional = eval_node(node.test, env)
             console.log('Conditional: ' + conditional)
@@ -407,10 +433,10 @@ function eval_node(node, env) {
 
         default:
             console.log('\n-------------')
-            console.log("New case: " + ins_node + " At: " + node.loc.start.line)
+            console.log("\nNew case to add: " + ins_node + " At: " + node.loc.start.line)
             // console.log("!!!!!!!!\n")
-            console.log("Hey! I don't Know!!!!!")
-            console.log("Stop: need to add new case :)")
+            // console.log("Hey! I don't Know!!!!!")
+            // console.log("Stop: need to add new case :)")
             // process.exit()
 
     }
