@@ -388,7 +388,7 @@ function eval_node(node, env) {
             // console.log("Property print: " + property)
 
             memberObject = new opNodeMember(object, property)
-            console.log("\nMember object: ", JSON.stringify(memberObject, null, 2))
+            // console.log("\nMember object: ", JSON.stringify(memberObject, null, 2))
             return memberObject;
 
 
@@ -442,6 +442,9 @@ function eval_node(node, env) {
     }
 }
 
+// Creating unknown node to deal with new and foreign functions
+
+
 ASTsWithLoc.body.forEach(function (ele) {
     // console.log("#########################\n")
     // console.log(JSON.stringify(ele, null, 2))
@@ -460,10 +463,9 @@ ASTs.body.forEach(function (ele) {
 });
 
 
-// console.log("-------- Generated AST --------")
-// console.log(JSON.stringify(ASTs, null, 2))
+console.log("-------- Generated AST --------")
+console.log(JSON.stringify(ASTs, null, 2))
 
 
-// console.log("\n------Printing Environment------")
-// console.log('\nprintEnvironment function: ')
-// console.log(env.printEnvironment())
+console.log("\n------Printing Environment------")
+console.log(env.printEnvironment())

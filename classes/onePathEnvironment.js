@@ -5,8 +5,12 @@ class onePathEnvironment{
 
     setVariable(varName, varValue){
         this._env[varName] = varValue
-
-    }
+        // Not storing value:
+        //      Storing boolean about whether the variable
+        //      stores sensitive information or not
+        //      Carrying the boolean throughout each variable it passes through
+        // 
+        }
 
     printEnvironment(){
         console.log('\n-------Environment------\n')
