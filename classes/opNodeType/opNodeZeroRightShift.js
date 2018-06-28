@@ -5,7 +5,7 @@ class opNodeZeroRightShift{
     }
 	
 	get Expression(){
-        return this._left.Expression + " >>> " + this._right.Expression
+        return "Op node Zero Right Shift: ("this._left.Expression + ", " + this._right.Expression + ")"
     }
 };
 

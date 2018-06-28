@@ -5,7 +5,7 @@ class opNodeOr{
     }
 	
 	get Expression(){
-        return this._left.Expression + " | " + this._right.Expression
+        return "Op node Or: ("this._left.Expression + ", " + this._right.Expression + ")"
     }
 };
 

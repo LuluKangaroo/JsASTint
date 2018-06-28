@@ -4,7 +4,7 @@ class opNodeIncre{
     }
 	
 	get Expression(){
-        return "+" + this._right.Expression
+        return "Op node Increment: ("+ this._right.Expression + ")"
     }
 };
 

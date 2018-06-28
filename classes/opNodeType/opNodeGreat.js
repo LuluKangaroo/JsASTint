@@ -5,7 +5,7 @@ class opNodeGreat{
     }
 	
 	get Expression(){
-        return this._left.Expression + " > " + this._right.Expression
+        return "Op node Greater Than: ("this._left.Expression + ", " + this._right.Expression + ")"
     }
 };
 

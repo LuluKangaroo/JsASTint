@@ -5,7 +5,7 @@ class opNodeMod{
     }
 	
 	get Expression(){
-        return this._left.Expression() %  this._right.Expression()
+        return "Op node Mod: ("this._left.Expression + ", " + this._right.Expression + ")"
     }
 };
 

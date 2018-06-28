@@ -5,7 +5,7 @@ class opNodeMember{
     }
 	
 	get Expression(){
-        return this._object + "." + this._property
+        return "Op node member of: ("this._left.Expression + ", " + this._right.Expression + ")"
     }
 };
 
