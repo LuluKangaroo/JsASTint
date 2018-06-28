@@ -327,6 +327,8 @@ function eval_node(node, env) {
             return varId
 
         case "Literal":
+            // Obtain type of the value given
+
             value = new leafNodeLiteral(node.value)
             return value
 			
