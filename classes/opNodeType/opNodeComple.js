@@ -4,7 +4,7 @@ class opNodeComple{
     }
 	
 	get Expression(){
-        return "Op node complement: (" + this._right.Expression + ")"
+        return "~" + this._right.Expression
     }
 };
 

@@ -4,7 +4,7 @@ class opNodeTypeOf{
     }
 	
 	get Expression(){
-        return "Op node typeOf: (" + this._right.Expression + ")"
+        return "typeof " + this._right.Expression
     }
 };
 

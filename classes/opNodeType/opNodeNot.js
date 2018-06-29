@@ -4,7 +4,7 @@ class opNodeNot{
     }
 	
 	get Expression(){
-        return "Op node Not: (" + this._right.Expression + ")"
+        return "!" + this._right.Expression
     }
 };
 

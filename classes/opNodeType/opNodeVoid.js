@@ -4,7 +4,7 @@ class opNodeVoid{
     }
 	
 	get Expression(){
-        return "Op node void: (" + this._right.Expression + ")"
+        return "void " + this._right.Expression
     }
 };
 

@@ -5,7 +5,7 @@ class opNodeXOr{
     }
 	
 	get Expression(){
-        return "Op node Exclusive Or: (" + this._left.Expression + ", " + this._right.Expression + ")"
+        return this._left.Expression + " ^ " + this._right.Expression
     }
 };
 

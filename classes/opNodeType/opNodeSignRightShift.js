@@ -5,7 +5,7 @@ class opNodeSignRightShift{
     }
 	
 	get Expression(){
-        return "Op node Signed Right Shift: (" + this._left.Expression + ", " + this._right.Expression + ")"
+        return this._left.Expression + " >> " + this._right.Expression
     }
 };
 

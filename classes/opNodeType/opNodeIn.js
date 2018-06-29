@@ -5,7 +5,7 @@ class opNodeIn{
     }
 	
 	get Expression(){
-        return "Op node In: (" + this._left.Expression + ", " + this._right.Expression + ")"
+        return this._left.Expression() + " in " + this._right.Expression()
     }
 };
 

@@ -7,9 +7,11 @@
 
 ************************************/
 
-// var a = "Jin Huang", b = "Yu Li"
-// var lab = 429
-// var school = "WSU"
+// var a = 111, b = 222
+// a = 333
+// b = 1000
+/*var lab = 429
+var school = "WSU"*/
 
 // whatIf = anotherWord
 
@@ -20,13 +22,14 @@
 
 // 	// Addition
 // var sum = 0
-// var sum = 1 + 2
-// sum = 3 + 4
-
-// 	// Subtraction
+// sum = 1 + 2
+// var sum1 = 0
+// sum1 = 3 + 4
+// //
+// // // 	// Subtraction
 // var minus = 0
-// var minus = 2 - 1
-// minus = 4 - 1
+// minus = 2 - 1
+// minus1 = 4 - 1
 
 // 	// Multiplication
 // var mult = 3 * 2
@@ -43,18 +46,18 @@
 	Testing Logical Operations
 **********************************/
 
-// boolean1 = true
-
-// boolean2 = false
-
+// boolean1 = 2
+// //
+// boolean2 = 1
+//
 // bin = boolean1 && boolean2
-
+//
 // bin2 = boolean1 || boolean2
-
+//
 // bin3 = 45 || 69
-
-// bin4 = true || false
-
+//
+// // bin4 = true || false
+//
 // bin5 = b || a
 
 
@@ -73,19 +76,21 @@
 **************************************/
 
 	// Greater than
-if (test1 < 11) {
+if (test1 > 11) {
 	test1 = 2
 
 }
-
+//
 // else if(test1 < 11) {
-// 	test1 = 1
+	//test1 = 1
 
-// }else if(false){
-// 	test1 = 0
-// }else {
-// 	test1 = -1
+//}else if(false){
+	//test1 = 0
 // }
+
+else {
+	test1 = -1
+}
 
 
 
@@ -161,14 +166,14 @@ if (test1 < 11) {
 	// 			var fos = Components.classes['@mozilla.org/network/file-output-stream;1'].
 	// 									createInstance(Components.interfaces.nsIFileOutputStream);
 	// 			fos.init(file, 0x02 | 0x08 | 0x20, 0664, 0); // write, create, truncate
-
+    //
 	// 			var os = Components.classes['@mozilla.org/intl/converter-output-stream;1']
 	// 						.createInstance(Components.interfaces.nsIConverterOutputStream);
 	// 			os.init(fos, 'UTF-8', 4096, Components.interfaces.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER);
-
+    //
 	// 			var profileIndex = this.getProfileIndex();
 	// 			this.writeProfile(os, profileIndex);
-
+    //
 	// 			os.close();
 	// 			fos.close();
 	// 		// }

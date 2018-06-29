@@ -5,7 +5,7 @@ class opNodeMult {
     }
 
     get Expression(){
-        return "Op node Multiply: (" + this._left.Expression + ", " + this._right.Expression + ")"
+        return this._left.Expression() * this._right.Expression()
     }
 };
 module.exports = opNodeMult;

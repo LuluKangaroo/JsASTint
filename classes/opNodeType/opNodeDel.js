@@ -4,7 +4,7 @@ class opNodeDel{
     }
 	
 	get Expression(){
-        return "Op node delete: (" + this._right.Expression + ")"
+        return "delete " + this._right.Expression
     }
 };
 

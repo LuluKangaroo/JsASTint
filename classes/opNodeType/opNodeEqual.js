@@ -5,7 +5,7 @@ class opNodeEqual{
     }
 	
 	get Expression(){
-        return "Op node Equals: (" + this._left.Expression + ", " + this._right.Expression + ")"
+        return this._left.Expression + " == " + this._right.Expression
     }
 };
 

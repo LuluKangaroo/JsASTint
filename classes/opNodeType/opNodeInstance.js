@@ -5,7 +5,7 @@ class opNodeInstance {
     }
 
     get Expression(){
-        return "Op node instanceOf: (" + this._left.Expression + ", " + this._right.Expression + ")"
+        return this._left.Expression() + "instanceof" + this._right.Expression()
     }
 };
 module.exports = opNodeInstance;

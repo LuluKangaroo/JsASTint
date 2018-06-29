@@ -1,8 +1,10 @@
 /*************************
     Importing JS Files
 **************************/
+const ASTNode = require('./classes/ASTNode');
 const onePathEnvironment = require('./classes/onePathEnvironment');
 const leafNodeLiteral = require('./classes/leafNodeType/leafNodeLiteral');
+const leafNodenumber = require('./classes/leafNodeType/leafNodenumber');
 
 const opNodePlus = require('./classes/opNodeType/opNodePlus');
 const opNodeMinus = require('./classes/opNodeType/opNodeMinus');
@@ -13,8 +15,6 @@ const opNodeOr = require('./classes/opNodeType/opNodeOr');
 const opNodeInstance = require('./classes/opNodeType/opNodeInstance');
 const opNodeMember = require('./classes/opNodeType/opNodeMember');
 const opNodeBitOr = require('./classes/opNodeType/opNodeBitOr');
-const opNodeGreat = require('./classes/opNodeType/opNodeGreat');
-const opNodeLess = require('./classes/opNodeType/opNodeLess');
 
 const blockStatementNode = require('./classes/blockStatementNode');
 const catchClauseNode = require('./classes/catchClauseNode');
@@ -32,6 +32,7 @@ const funcNodeRound = require('./classes/funcNodeType/funcNoderound');
 //   require( path.resolve( file ) );
 // });
 
+var debug = 0
 
 
 /*********************
@@ -101,10 +102,23 @@ function eval_node(node, env) {
             return expressState
 
         case "AssignmentExpression":
-            varName = eval_node(node.left, env)
-            varVal = eval_node(node.right, env)
-            env.setVariable(varName, varVal)
-            assignExp = new expNodeAssignment(varName, varVal)
+            // varName = eval_node(node.left, env)
+            _var = node.left
+
+            var ins_subnode = _var.type
+
+            if (ins_subnode == "Identifier"){
+                varName = _var.name
+            } else {
+                console.log("\tHere is new case for Assignment cases")
+                process.exit()
+            }
+
+            varExpr = eval_node(node.right, env)
+            env.setVariable(varName, varExpr)
+
+
+            assignExp = new expNodeAssignment(varName, varExpr)
             return assignExp
 
         case "SequenceExpression":
@@ -326,13 +340,34 @@ function eval_node(node, env) {
                     its own class and doesn't have getter Expression
             *************************************/
             varId = node.name
-            return varId
+
+            result = env.getVariable(varId)
+
+            return result
 
         case "Literal":
-            // Obtain type of the value given
+            var val = node.value
+            val_type = typeof(val)
+            // console.log(val_type)
 
-            value = new leafNodeLiteral(node.value)
-            return value
+            switch (val_type){
+                case "string":
+                    value = new leafNodeString(val)
+                    return value
+
+                case "number":
+                    value = new leafNodenumber(val)
+                    return value
+
+                case "boolean":
+                    value = new leafNodeBoolean(val)
+                    return value
+
+                default:
+                    console.log("\tIn the Literal case, you need an update for lieral type!\n")
+                    process.exit()
+            }
+            return
 			
 		case "CallExpression":
 			callName = eval_node(node.callee, env)
@@ -392,7 +427,7 @@ function eval_node(node, env) {
             // console.log("Property print: " + property)
 
             memberObject = new opNodeMember(object, property)
-            // console.log("\nMember object: ", JSON.stringify(memberObject, null, 2))
+            console.log("\nMember object: ", JSON.stringify(memberObject, null, 2))
             return memberObject;
 
 
@@ -406,17 +441,12 @@ function eval_node(node, env) {
 			userClass.push(id)
             // Have KEY as function NAME, and VALUE as blockStatement content within function
 
+
+
+
             // id = eval_node(node.id, env)
             // funcParams = eval_node(node.params, env)
             funcBody = eval_node(node.body, env)
-
-
-            // Creating new local environment to hold body within functionDeclaration
-            //  Pass local environment into functionBody
-            //  Output the funciton's return value
-            //  Later to send the returned value into somewhere lel
-
-
             return;
 
         case "TryStatement":
@@ -443,34 +473,16 @@ function eval_node(node, env) {
 
             return;
 
-        // ==========================
-        //  If Statement
-        //      Evaluation of ONLY the if branch, assumption that there is no alternative
-        case "IfStatement":
-            console.log("=== If Statement ===")
-            var conditional = eval_node(node.test, env)
-            console.log('\nConditional: ', conditional)
-            var consBlock = eval_node(node.consequent, env)
-            console.log('\nConsequent: ', consBlock)
-
-            var alt = eval_node(node.alternate, env)
-            console.log('\nAlternate: ', alt)
-
-            return;
-
         default:
             console.log('\n-------------')
             console.log("\nNew case to add: " + ins_node + " At: " + node.loc.start.line)
-            // console.log("!!!!!!!!\n")
-            // console.log("Hey! I don't Know!!!!!")
-            // console.log("Stop: need to add new case :)")
+            console.log("!!!!!!!!\n")
+            console.log("Hey! I don't Know!!!!!")
+            console.log("Stop: need to add new case :)")
             // process.exit()
 
     }
 }
-
-// Creating unknown node to deal with new and foreign functions
-
 
 ASTsWithLoc.body.forEach(function (ele) {
     // console.log("#########################\n")
@@ -494,5 +506,6 @@ ASTs.body.forEach(function (ele) {
 // console.log(JSON.stringify(ASTs, null, 2))
 
 
-// console.log("\n------Printing Environment------")
-// console.log(env.printEnvironment())
+console.log("\n------Printing Environment------")
+console.log('\nprintEnvironment function: ')
+console.log(env.printEnvironment())

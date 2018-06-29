@@ -5,7 +5,7 @@ class opNodeLess{
     }
 	
 	get Expression(){
-        return "Op node Less Than: (" + this._left.Expression + ", " + this._right.Expression + ")"
+        return this._left.Expression + " < " + this._right.Expression
     }
 };
 
