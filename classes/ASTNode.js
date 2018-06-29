@@ -1,6 +1,6 @@
 class ASTNode{
-    constructor(){
-
+    constructor(val){
+        this.default = val
     }
 };
 

@@ -1,8 +1,10 @@
 /*************************
     Importing JS Files
 **************************/
+const ASTNode = require('./classes/ASTNode');
 const onePathEnvironment = require('./classes/onePathEnvironment');
 const leafNodeLiteral = require('./classes/leafNodeType/leafNodeLiteral');
+const leafNodenumber = require('./classes/leafNodeType/leafNodenumber');
 
 const opNodePlus = require('./classes/opNodeType/opNodePlus');
 const opNodeMinus = require('./classes/opNodeType/opNodeMinus');
@@ -101,10 +103,23 @@ function eval_node(node, env) {
             return expressState
 
         case "AssignmentExpression":
-            varName = eval_node(node.left, env)
-            varVal = eval_node(node.right, env)
-            env.setVariable(varName, varVal)
-            assignExp = new expNodeAssignment(varName, varVal)
+            // varName = eval_node(node.left, env)
+            _var = node.left
+
+            var ins_subnode = _var.type
+
+            if (ins_subnode == "Identifier"){
+                varName = _var.name
+            } else {
+                console.log("\tHere is new case for Assignment cases")
+                process.exit()
+            }
+
+            varExpr = eval_node(node.right, env)
+            env.setVariable(varName, varExpr)
+
+
+            assignExp = new expNodeAssignment(varName, varExpr)
             return assignExp
 
         case "SequenceExpression":
@@ -326,13 +341,34 @@ function eval_node(node, env) {
                     its own class and doesn't have getter Expression
             *************************************/
             varId = node.name
-            return varId
+
+            result = env.getVariable(varId)
+
+            return result
 
         case "Literal":
-            // Obtain type of the value given
+            var val = node.value
+            val_type = typeof(val)
+            // console.log(val_type)
 
-            value = new leafNodeLiteral(node.value)
-            return value
+            switch (val_type){
+                case "string":
+                    value = new leafNodeString(val)
+                    return value
+
+                case "number":
+                    value = new leafNodenumber(val)
+                    return value
+
+                case "boolean":
+                    value = new leafNodeBoolean(val)
+                    return value
+
+                default:
+                    console.log("\tIn the Literal case, you need an update for lieral type!\n")
+                    process.exit()
+            }
+            return
 			
 		case "CallExpression":
 			callName = eval_node(node.callee, env)
