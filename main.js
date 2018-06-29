@@ -13,6 +13,8 @@ const opNodeOr = require('./classes/opNodeType/opNodeOr');
 const opNodeInstance = require('./classes/opNodeType/opNodeInstance');
 const opNodeMember = require('./classes/opNodeType/opNodeMember');
 const opNodeBitOr = require('./classes/opNodeType/opNodeBitOr');
+const opNodeGreat = require('./classes/opNodeType/opNodeGreat');
+const opNodeLess = require('./classes/opNodeType/opNodeLess');
 
 const blockStatementNode = require('./classes/blockStatementNode');
 const catchClauseNode = require('./classes/catchClauseNode');
@@ -447,13 +449,12 @@ function eval_node(node, env) {
         case "IfStatement":
             console.log("=== If Statement ===")
             var conditional = eval_node(node.test, env)
-            console.log('Conditional: ', conditional)
+            console.log('\nConditional: ', conditional)
             var consBlock = eval_node(node.consequent, env)
-            console.log('Consequent: ', consBlock)
+            console.log('\nConsequent: ', consBlock)
 
-            // var alt = eval_node(node.alternate, env)
-            // console.log('Alternate: ', alt)
-
+            var alt = eval_node(node.alternate, env)
+            console.log('\nAlternate: ', alt)
 
             return;
 
@@ -489,8 +490,8 @@ ASTs.body.forEach(function (ele) {
 });
 
 
-console.log("-------- Generated AST --------")
-console.log(JSON.stringify(ASTs, null, 2))
+// console.log("-------- Generated AST --------")
+// console.log(JSON.stringify(ASTs, null, 2))
 
 
 // console.log("\n------Printing Environment------")
