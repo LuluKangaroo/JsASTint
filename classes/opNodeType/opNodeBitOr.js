@@ -5,7 +5,7 @@ class opNodeBitOr{
     }
 	
 	get Expression(){
-        return "Op node Bitwise Or: ("this._left.Expression + ", " + this._right.Expression + ")"
+        return "Op node Bitwise Or: (" + this._left.Expression + ", " + this._right.Expression + ")"
     }
 };
 

@@ -5,7 +5,7 @@ class opNodeAnd{
     }
 	
 	get Expression(){
-        return "Op node And: ("this._left.Expression + ", " + this._right.Expression + ")"
+        return "Op node And: (" + this._left.Expression + ", " + this._right.Expression + ")"
     }
 };
 
