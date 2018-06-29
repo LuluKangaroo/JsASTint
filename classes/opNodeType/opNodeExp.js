@@ -5,7 +5,7 @@ class opNodeExp{
     }
 	
 	get Expression(){
-        return "Op node Exponents: ("this._left.Expression + ", " + this._right.Expression + ")"
+        return "Op node Exponents: (" + this._left.Expression + ", " + this._right.Expression + ")"
     }
 };
 

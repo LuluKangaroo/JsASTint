@@ -5,7 +5,7 @@ class opNodeNotEqual{
     }
 	
 	get Expression(){
-        return "Op node Not Equal: ("this._left.Expression + ", " + this._right.Expression + ")"
+        return "Op node Not Equal: (" + this._left.Expression + ", " + this._right.Expression + ")"
     }
 };
 
