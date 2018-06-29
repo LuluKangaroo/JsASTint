@@ -1,5 +1,5 @@
 const ASTNode = require('../ASTNode');
-class leafNodeNumber extends ASTNode{
+class leafNodeBoolean extends ASTNode{
     constructor(value){
         super(null)
         this._val = value
@@ -7,8 +7,8 @@ class leafNodeNumber extends ASTNode{
     }
 
     get Expression(){
-        return "( " + this._val + ": number)"
+        return "( " + this._val + ": boolean)"
     }
 };
 
-module.exports = leafNodeNumber;
+module.exports = leafNodeBoolean;

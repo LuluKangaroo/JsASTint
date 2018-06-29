@@ -4,7 +4,9 @@
 const ASTNode = require('./classes/ASTNode');
 const onePathEnvironment = require('./classes/onePathEnvironment');
 const leafNodeLiteral = require('./classes/leafNodeType/leafNodeLiteral');
-const leafNodenumber = require('./classes/leafNodeType/leafNodenumber');
+const leafNodeNumber = require('./classes/leafNodeType/leafNodenumber');
+const leafNodeBoolean = require('./classes/leafNodeType/leafNodeBoolean');
+const leafNodeString = require('./classes/leafNodeType/leafNodeString');
 
 const opNodePlus = require('./classes/opNodeType/opNodePlus');
 const opNodeMinus = require('./classes/opNodeType/opNodeMinus');
@@ -357,7 +359,7 @@ function eval_node(node, env) {
                     return value
 
                 case "number":
-                    value = new leafNodenumber(val)
+                    value = new leafNodeNumber(val)
                     return value
 
                 case "boolean":
@@ -530,5 +532,5 @@ ASTs.body.forEach(function (ele) {
 // console.log(JSON.stringify(ASTs, null, 2))
 
 
-// console.log("\n------Printing Environment------")
-// console.log(env.printEnvironment())
+console.log("\n------Printing Environment------")
+console.log(env.printEnvironment())

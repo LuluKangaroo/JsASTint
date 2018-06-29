@@ -1,144 +1,15 @@
 {
   "type": "Program",
-  "body": [
-    {
-      "type": "IfStatement",
-      "test": {
-        "type": "BinaryExpression",
-        "operator": "<",
-        "left": {
-          "type": "Identifier",
-          "name": "test1",
-          "loc": {
-            "start": {
-              "line": 76,
-              "column": 4
-            },
-            "end": {
-              "line": 76,
-              "column": 9
-            }
-          }
-        },
-        "right": {
-          "type": "Literal",
-          "value": 11,
-          "raw": "11",
-          "loc": {
-            "start": {
-              "line": 76,
-              "column": 12
-            },
-            "end": {
-              "line": 76,
-              "column": 14
-            }
-          }
-        },
-        "loc": {
-          "start": {
-            "line": 76,
-            "column": 4
-          },
-          "end": {
-            "line": 76,
-            "column": 14
-          }
-        }
-      },
-      "consequent": {
-        "type": "BlockStatement",
-        "body": [
-          {
-            "type": "ExpressionStatement",
-            "expression": {
-              "type": "AssignmentExpression",
-              "operator": "=",
-              "left": {
-                "type": "Identifier",
-                "name": "test1",
-                "loc": {
-                  "start": {
-                    "line": 77,
-                    "column": 1
-                  },
-                  "end": {
-                    "line": 77,
-                    "column": 6
-                  }
-                }
-              },
-              "right": {
-                "type": "Literal",
-                "value": 2,
-                "raw": "2",
-                "loc": {
-                  "start": {
-                    "line": 77,
-                    "column": 9
-                  },
-                  "end": {
-                    "line": 77,
-                    "column": 10
-                  }
-                }
-              },
-              "loc": {
-                "start": {
-                  "line": 77,
-                  "column": 1
-                },
-                "end": {
-                  "line": 77,
-                  "column": 10
-                }
-              }
-            },
-            "loc": {
-              "start": {
-                "line": 77,
-                "column": 1
-              },
-              "end": {
-                "line": 77,
-                "column": 10
-              }
-            }
-          }
-        ],
-        "loc": {
-          "start": {
-            "line": 76,
-            "column": 16
-          },
-          "end": {
-            "line": 79,
-            "column": 1
-          }
-        }
-      },
-      "alternate": null,
-      "loc": {
-        "start": {
-          "line": 76,
-          "column": 0
-        },
-        "end": {
-          "line": 79,
-          "column": 1
-        }
-      }
-    }
-  ],
+  "body": [],
   "sourceType": "script",
   "loc": {
     "start": {
-      "line": 76,
-      "column": 0
+      "line": 202,
+      "column": 4
     },
     "end": {
-      "line": 79,
-      "column": 1
+      "line": 202,
+      "column": 4
     }
   }
 }

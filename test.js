@@ -10,6 +10,7 @@
 // var a = "Jin Huang", b = "Yu Li"
 // var lab = 429
 // var school = "WSU"
+// var asdf = true
 
 // whatIf = anotherWord
 
@@ -73,10 +74,10 @@
 **************************************/
 
 	// Greater than
-if (test1 < 11) {
-	test1 = 2
+// if (test1 < 11) {
+// 	test1 = 2
 
-}
+// }
 
 // else if(test1 < 11) {
 // 	test1 = 1
