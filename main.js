@@ -407,6 +407,14 @@ function eval_node(node, env) {
             // id = eval_node(node.id, env)
             // funcParams = eval_node(node.params, env)
             funcBody = eval_node(node.body, env)
+
+
+            // Creating new local environment to hold body within functionDeclaration
+            //  Pass local environment into functionBody
+            //  Output the funciton's return value
+            //  Later to send the returned value into somewhere lel
+
+
             return;
 
         case "TryStatement":
@@ -430,6 +438,22 @@ function eval_node(node, env) {
         case "WhileStatement":
             conditional = eval_node(node.test, env)
             console.log('Conditional: ' + conditional)
+
+            return;
+
+        // ==========================
+        //  If Statement
+        //      Evaluation of ONLY the if branch, assumption that there is no alternative
+        case "IfStatement":
+            console.log("=== If Statement ===")
+            var conditional = eval_node(node.test, env)
+            console.log('Conditional: ', conditional)
+            var consBlock = eval_node(node.consequent, env)
+            console.log('Consequent: ', consBlock)
+
+            // var alt = eval_node(node.alternate, env)
+            // console.log('Alternate: ', alt)
+
 
             return;
 
@@ -469,5 +493,5 @@ console.log("-------- Generated AST --------")
 console.log(JSON.stringify(ASTs, null, 2))
 
 
-console.log("\n------Printing Environment------")
-console.log(env.printEnvironment())
+// console.log("\n------Printing Environment------")
+// console.log(env.printEnvironment())

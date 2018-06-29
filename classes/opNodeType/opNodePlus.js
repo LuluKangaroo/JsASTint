@@ -6,7 +6,7 @@ class opNodePlus{
 
     get Expression(){
     	// Change expression prints
-        return "Op node Plus: ("this._left.Expression + ", " + this._right.Expression + ")"
+        return "Op node Plus: (" + this._left.Expression + ", " + this._right.Expression + ")"
     }
 };
 
