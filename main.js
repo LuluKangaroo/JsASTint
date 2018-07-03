@@ -113,6 +113,7 @@ function eval_node(node, env) {
             _var = node.left
 
             var ins_subnode = _var.type
+			console.log(ins_subnode)
             if (ins_subnode == "Identifier"){
                 varName = _var.name
             } else {
@@ -532,6 +533,6 @@ ASTs.body.forEach(function (ele) {
 
 
 // console.log("-------- Generated AST --------")
-// console.log(JSON.stringify(ASTs, null, 2))
+//console.log(JSON.stringify(ASTs, null, 2))
 
 console.log(env.printEnvironment())

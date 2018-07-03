@@ -74,9 +74,9 @@
 **************************************/
 
 	// Greater than
-if (test1 < 11) {
-	test1 = 2
-}
+// if (test1 < 11) {
+//	test1 = 2
+//}
 
 // else if(test1 < 11) {
 // 	test1 = 1
@@ -200,3 +200,8 @@ if (test1 < 11) {
 //     case "Jin Huang":
 //         console.log(a)
 // }
+/* vim:set ts=2 sw=2 sts=2 expandtab */
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+

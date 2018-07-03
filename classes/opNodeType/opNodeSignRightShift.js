@@ -1,5 +1,8 @@
-class opNodeSignRightShift{
+const ASTNode = require('../ASTNode');
+
+class opNodeSignRightShift extends ASTNode{
     constructor(left, right){
+		super()
         this._left = left
         this._right = right
     }

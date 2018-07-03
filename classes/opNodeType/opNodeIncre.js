@@ -1,5 +1,8 @@
-class opNodeIncre{
+const ASTNode = require('../ASTNode');
+
+class opNodeIncre extends ASTNode{
     constructor(right){
+		super()
         this._right = right
     }
 	
