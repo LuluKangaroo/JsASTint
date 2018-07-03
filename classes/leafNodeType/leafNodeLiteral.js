@@ -1,5 +1,8 @@
-class leafNodeLiteral {
+const ASTNode = require('../ASTNode');
+
+class leafNodeLiteral extends ASTNode{
     constructor(value){
+        super(null)
         this._val = value
     }
 

@@ -1,5 +1,8 @@
-class expNodeAssignment{
+const ASTNode = require('../ASTNode');
+
+class expNodeAssignment extends ASTNode{
     constructor(name, value){
+        super(null)
         this._name = name
         this._value = value
     }

@@ -1,5 +1,8 @@
-class funcNoderound{
+const ASTNode = require('../ASTNode');
+
+class funcNodeRound extends ASTNode{
     constructor(name, args){
+        super(null)
         this._name = name
         this._args = args
 
@@ -29,4 +32,4 @@ class funcNoderound{
     }
 };
 
-module.exports = funcNoderound;
+module.exports = funcNodeRound;
