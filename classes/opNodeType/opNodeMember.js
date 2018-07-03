@@ -1,5 +1,8 @@
-class opNodeMember{
+const ASTNode = require('../ASTNode');
+
+class opNodeMember extends ASTNode{
     constructor(object, property){
+		super()
         this._object = object
 		this._property = property
     }

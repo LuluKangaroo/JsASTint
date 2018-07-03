@@ -75,8 +75,13 @@ var asdf = true
 
 	// Greater than
 // if (test1 < 11) {
+<<<<<<< HEAD
+//	test1 = 2
+//}
+=======
 // 	test1 = 2
 // }
+>>>>>>> 160b9550290341a6be981fd9e47c2dc68bc0ad69
 
 // else if(test1 < 11) {
 // 	test1 = 1
@@ -200,3 +205,8 @@ var asdf = true
 //     case "Jin Huang":
 //         console.log(a)
 // }
+/* vim:set ts=2 sw=2 sts=2 expandtab */
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+

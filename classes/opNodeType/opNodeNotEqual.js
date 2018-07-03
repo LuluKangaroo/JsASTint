@@ -1,5 +1,8 @@
-class opNodeNotEqual{
+const ASTNode = require('../ASTNode');
+
+class opNodeNotEqual extends ASTNode{
     constructor(left, right){
+		super()
         this._left = left
         this._right = right
     }

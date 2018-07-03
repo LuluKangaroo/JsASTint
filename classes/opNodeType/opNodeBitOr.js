@@ -1,5 +1,9 @@
-class opNodeBitOr{
+const ASTNode = require('../ASTNode');
+
+
+class opNodeBitOr extends ASTNode{
     constructor(left, right){
+		super()
         this._left = left
         this._right = right
     }
