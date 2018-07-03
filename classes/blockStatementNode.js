@@ -1,5 +1,8 @@
-class blockStatementNode{
+const ASTNode = require('./ASTNode');
+
+class blockStatementNode extends ASTNode{
     constructor(statements){
+        super(null)
         this._statements = statements
     }
 

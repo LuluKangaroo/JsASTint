@@ -1,4 +1,5 @@
 const ASTNode = require('../ASTNode');
+
 class leafNodeString extends ASTNode{
     constructor(value){
         super(null)
