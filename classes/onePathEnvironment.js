@@ -19,6 +19,8 @@ class onePathEnvironment{
             if (this._env.hasOwnProperty(key)) {
                 var value = this._env[key]
                 console.log(key + ":", value.Expression, "\n");
+                // console.log("Content :", value.Content, "\n");
+                // console.log("Test Method :", value.testMethod, "\n");
             }
         }
         console.log("------------------------\n")

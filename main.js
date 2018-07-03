@@ -2,6 +2,8 @@
     Importing JS Files
 **************************/
 const ASTNode = require('./classes/ASTNode');
+// var testInstance = new ASTNode();
+
 const onePathEnvironment = require('./classes/onePathEnvironment');
 const leafNodeLiteral = require('./classes/leafNodeType/leafNodeLiteral');
 const leafNodeIdentifier = require('./classes/leafNodeType/leafNodeIdentifier');
@@ -88,6 +90,7 @@ function eval_node(node, env) {
     if(node == null){
         return null
     }
+
     var ins_node = node.type
 
     switch (String(ins_node)) {
@@ -316,7 +319,7 @@ function eval_node(node, env) {
             return
 
         case "BlockStatement":
-            // ISSUE: Need to return types of objects to add the lines
+            // RESOLVED: Need to return types of objects to add the lines
             //      of statements to a list for the BlockStatement body
             // Objects that need creating: ASSIGNMENT EXPRESSION,
             //     SequenceExpression (CREATE new case for this :c )
