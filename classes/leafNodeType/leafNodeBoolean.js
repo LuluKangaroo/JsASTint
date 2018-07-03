@@ -7,7 +7,7 @@ class leafNodeBoolean extends ASTNode{
     }
 
     get Expression(){
-        return "( " + this._val + ": boolean)"
+        return "(" + this._val + ": boolean)"
     }
 };
 

@@ -21,7 +21,7 @@ class onePathEnvironment{
                 console.log(key + ":", value.Expression, "\n");
             }
         }
-        console.log("----------------------\n")
+        console.log("------------------------\n")
     }
 
     getVariable(varName){

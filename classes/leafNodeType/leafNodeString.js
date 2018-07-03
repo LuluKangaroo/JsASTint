@@ -7,7 +7,7 @@ class leafNodeString extends ASTNode{
     }
 
     get Expression(){
-        return "( " + this._val + ": string)"
+        return "(" + this._val + ": string)"
     }
 };
 

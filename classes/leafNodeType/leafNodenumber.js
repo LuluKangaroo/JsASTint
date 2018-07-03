@@ -7,7 +7,7 @@ class leafNodeNumber extends ASTNode{
     }
 
     get Expression(){
-        return "( " + this._val + ": number)"
+        return "(" + this._val + ": number)"
     }
 };
 

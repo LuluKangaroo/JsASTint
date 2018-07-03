@@ -4,6 +4,7 @@
 const ASTNode = require('./classes/ASTNode');
 const onePathEnvironment = require('./classes/onePathEnvironment');
 const leafNodeLiteral = require('./classes/leafNodeType/leafNodeLiteral');
+const leafNodeIdentifier = require('./classes/leafNodeType/leafNodeIdentifier');
 const leafNodeNumber = require('./classes/leafNodeType/leafNodenumber');
 const leafNodeBoolean = require('./classes/leafNodeType/leafNodeBoolean');
 const leafNodeString = require('./classes/leafNodeType/leafNodeString');
@@ -19,6 +20,7 @@ const opNodeMember = require('./classes/opNodeType/opNodeMember');
 const opNodeBitOr = require('./classes/opNodeType/opNodeBitOr');
 const opNodeGreat = require('./classes/opNodeType/opNodeGreat');
 const opNodeLess = require('./classes/opNodeType/opNodeLess');
+const opNodeNot = require('./classes/opNodeType/opNodeNot');
 
 const blockStatementNode = require('./classes/blockStatementNode');
 const catchClauseNode = require('./classes/catchClauseNode');
@@ -63,9 +65,9 @@ var srcFileName = fileName.substring(fileName.indexOf('/'), fileName.indexOf('.'
 var treeFileName = srcFileName + ".JSON"
 
 fs2.writeFile('./parsedASTs/' + treeFileName, JSON.stringify(ASTsWithLoc, null, 2), (Error) => {
-    if (Error) throw Error;
+    if (Error) { };
 
-    console.log('Parsed tree saved to file: ')
+    console.log('Parsed tree saved to file: ' + treeFileName)
 });
 
 // console.log('exit here!!!!!!!');
@@ -97,7 +99,9 @@ function eval_node(node, env) {
         case "VariableDeclarator":
             varName = eval_node(node.id, env)
             varVal = eval_node(node.init, env)
-            env.setVariable(varName, varVal )
+
+            varName = varName.value
+            env.setVariable(varName, varVal)
             return
 
         case "ExpressionStatement":
@@ -109,7 +113,6 @@ function eval_node(node, env) {
             _var = node.left
 
             var ins_subnode = _var.type
-
             if (ins_subnode == "Identifier"){
                 varName = _var.name
             } else {
@@ -274,36 +277,35 @@ function eval_node(node, env) {
         *****************************************/
         case "UnaryExpression":
             opertor = node.operator
-            // left = eval_node(node.left, env)
-            right = eval_node(node.right, env)
+            argument = eval_node(node.argument, env)
 
             switch (opertor){
                 case "+":
-                    opNode = new opNodeIncre(right)
+                    opNode = new opNodeIncre(argument)
                     return opNode
 
                 case "-":
-                    opNode = new opNodeDecre(right)
+                    opNode = new opNodeDecre(argument)
                     return opNode
 
                 case "~":
-                    opNode = new opNodeComple(right)
+                    opNode = new opNodeComple(argument)
                     return opNode
 
                 case "!":
-                    opNode = new opNodeNot(right)
+                    opNode = new opNodeNot(argument)
                     return opNode
 
                 case "delete":
-                    opNode = new opNodeDel(right)
+                    opNode = new opNodeDel(argument)
                     return opNode
 
                 case "void":
-                    opNode = new opNodeVoid(right)
+                    opNode = new opNodeVoid(argument)
                     return opNode
 
                 case "typeof":
-                    opNode = new opNodeTypeOf(right)
+                    opNode = new opNodeTypeOf(argument)
                     return opNode
 
                 default:
@@ -313,11 +315,11 @@ function eval_node(node, env) {
             return
 
         case "BlockStatement":
-                // ISSUE: Need to return types of objects to add the lines
-                //      of statements to a list for the BlockStatement body
-                // Objects that need creating: ASSIGNMENT EXPRESSION,
-                //     SequenceExpression (CREATE new case for this :c )
-                //     VariableDeclaration (object should use ARRAY to store declarations)
+            // ISSUE: Need to return types of objects to add the lines
+            //      of statements to a list for the BlockStatement body
+            // Objects that need creating: ASSIGNMENT EXPRESSION,
+            //     SequenceExpression (CREATE new case for this :c )
+            //     VariableDeclaration (object should use ARRAY to store declarations)
 
             var statementLines = []
             var listOfLines = node.body
@@ -325,14 +327,14 @@ function eval_node(node, env) {
             listOfLines.forEach(function (ele) {
                 // console.log("\nele: ", ele);
                 singleStatement = eval_node(ele, env)
-                console.log("\nStatement type: ", typeof singleStatement)
+                // console.log("\nStatement type: ", typeof singleStatement)
                 statementLines.push(singleStatement);
             })
 
-            console.log("Printing statementLines")
-            for (var i = 0; i < statementLines.length; i++) {
-                console.log(statementLines[i]);
-            }
+            // console.log("Printing statementLines")
+            // for (var i = 0; i < statementLines.length; i++) {
+            //     console.log(statementLines[i]);
+            // }
 
             return;
 
@@ -343,10 +345,11 @@ function eval_node(node, env) {
                     its own class and doesn't have getter Expression
             *************************************/
             varId = node.name
-
             result = env.getVariable(varId)
 
-            return result
+            identNode = new leafNodeIdentifier(node.name)
+
+            return identNode
 
         case "Literal":
             var val = node.value
@@ -410,7 +413,7 @@ function eval_node(node, env) {
 
                 default:
                     console.log('\n-------------')
-                    console.log("\nNew function name: " + callName+ " At: " + node.loc.start.line)
+                    console.log("\nNew function name: ", callName, " At: " + node.loc.start.line)
                     // console.log("STOP: Here is an new Call Expression You need to add on!!!!")
                     // process.exit()
                     // return
@@ -424,10 +427,10 @@ function eval_node(node, env) {
             object = eval_node(node.object, env);
             property = eval_node(node.property, env);
 
-            // console.log("\nObject type print: " + typeof object)
-            // console.log("Object print: " + object)
-            // console.log("Property type print: " + typeof property)
-            // console.log("Property print: " + property)
+            // console.log("\nObject type print: ", typeof object)
+            // console.log("Object print: ", object)
+            // console.log("Property type print: ", typeof property)
+            // console.log("Property print: ", property)
 
             memberObject = new opNodeMember(object, property)
             // console.log("\nMember object: ", JSON.stringify(memberObject, null, 2))
@@ -531,6 +534,4 @@ ASTs.body.forEach(function (ele) {
 // console.log("-------- Generated AST --------")
 // console.log(JSON.stringify(ASTs, null, 2))
 
-
-console.log("\n------Printing Environment------")
 console.log(env.printEnvironment())

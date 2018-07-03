@@ -74,10 +74,9 @@
 **************************************/
 
 	// Greater than
-// if (test1 < 11) {
-// 	test1 = 2
-
-// }
+if (test1 < 11) {
+	test1 = 2
+}
 
 // else if(test1 < 11) {
 // 	test1 = 1
@@ -106,6 +105,7 @@
 	// Examples taken from Shoptimate main.js
 // var data = self.data
 // var Request = require("request").Request;
+
 // tabs.on('ready', function(tab){});
 
 

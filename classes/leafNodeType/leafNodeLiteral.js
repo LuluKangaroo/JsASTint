@@ -4,7 +4,7 @@ class leafNodeLiteral {
     }
 
     get Expression(){
-        return "Literal: " + this._val
+        return "(" + this._val + ": literal)"
     }
 };
 
