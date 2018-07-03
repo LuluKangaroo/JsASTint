@@ -1,5 +1,8 @@
-class varDeclaratorNode{
+const ASTNode = require('../ASTNode');
+
+class varDeclaratorNode extends ASTNode{
     constructor(statements){
+        super(null)
         this._statements = statements
     }
 

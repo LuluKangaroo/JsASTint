@@ -1,5 +1,8 @@
-class sequenceExpNode{
+const ASTNode = require('../ASTNode');
+
+class sequenceExpNode extends ASTNode{
     constructor(expList){
+        super(null)
 		this._expList = expList
     }
 

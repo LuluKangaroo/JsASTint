@@ -1,5 +1,8 @@
-class leafNodeIdentifier {
+const ASTNode = require('../ASTNode');
+
+class leafNodeIdentifier extends ASTNode{
     constructor(value){
+        super(null)
         this._val = value
     }
 
