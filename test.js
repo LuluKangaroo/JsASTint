@@ -8,9 +8,9 @@
 ************************************/
 
 // var a = "Jin Huang", b = "Yu Li"
-var lab = 429
-var school = "WSU"
-var asdf = true
+// var lab = 429
+// var school = "WSU"
+// var asdf = true
 
 // whatIf = anotherWord
 
@@ -75,13 +75,8 @@ var asdf = true
 
 	// Greater than
 // if (test1 < 11) {
-<<<<<<< HEAD
-//	test1 = 2
-//}
-=======
 // 	test1 = 2
 // }
->>>>>>> 160b9550290341a6be981fd9e47c2dc68bc0ad69
 
 // else if(test1 < 11) {
 // 	test1 = 1
@@ -123,6 +118,15 @@ var asdf = true
 // 	var a = hello, c = ohNo;
 // 	var single = 0;
 // }
+
+
+
+/******************************
+	Object Expression Test
+*******************************/
+
+variable = {'url':url, 'why':why, 'smh':smh}
+
 
 
 /*******************************

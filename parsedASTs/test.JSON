@@ -1,179 +1,197 @@
-<<<<<<< HEAD
-=======
 {
   "type": "Program",
   "body": [
     {
-      "type": "VariableDeclaration",
-      "declarations": [
-        {
-          "type": "VariableDeclarator",
-          "id": {
-            "type": "Identifier",
-            "name": "lab",
-            "loc": {
-              "start": {
-                "line": 11,
-                "column": 4
-              },
-              "end": {
-                "line": 11,
-                "column": 7
-              }
-            }
-          },
-          "init": {
-            "type": "Literal",
-            "value": 429,
-            "raw": "429",
-            "loc": {
-              "start": {
-                "line": 11,
-                "column": 10
-              },
-              "end": {
-                "line": 11,
-                "column": 13
-              }
-            }
-          },
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "Identifier",
+          "name": "variable",
           "loc": {
             "start": {
-              "line": 11,
-              "column": 4
+              "line": 128,
+              "column": 0
             },
             "end": {
-              "line": 11,
-              "column": 13
+              "line": 128,
+              "column": 8
             }
           }
+        },
+        "right": {
+          "type": "ObjectExpression",
+          "properties": [
+            {
+              "type": "Property",
+              "key": {
+                "type": "Literal",
+                "value": "url",
+                "raw": "'url'",
+                "loc": {
+                  "start": {
+                    "line": 128,
+                    "column": 12
+                  },
+                  "end": {
+                    "line": 128,
+                    "column": 17
+                  }
+                }
+              },
+              "computed": false,
+              "value": {
+                "type": "Identifier",
+                "name": "url",
+                "loc": {
+                  "start": {
+                    "line": 128,
+                    "column": 18
+                  },
+                  "end": {
+                    "line": 128,
+                    "column": 21
+                  }
+                }
+              },
+              "kind": "init",
+              "method": false,
+              "shorthand": false,
+              "loc": {
+                "start": {
+                  "line": 128,
+                  "column": 12
+                },
+                "end": {
+                  "line": 128,
+                  "column": 21
+                }
+              }
+            },
+            {
+              "type": "Property",
+              "key": {
+                "type": "Literal",
+                "value": "why",
+                "raw": "'why'",
+                "loc": {
+                  "start": {
+                    "line": 128,
+                    "column": 23
+                  },
+                  "end": {
+                    "line": 128,
+                    "column": 28
+                  }
+                }
+              },
+              "computed": false,
+              "value": {
+                "type": "Identifier",
+                "name": "why",
+                "loc": {
+                  "start": {
+                    "line": 128,
+                    "column": 29
+                  },
+                  "end": {
+                    "line": 128,
+                    "column": 32
+                  }
+                }
+              },
+              "kind": "init",
+              "method": false,
+              "shorthand": false,
+              "loc": {
+                "start": {
+                  "line": 128,
+                  "column": 23
+                },
+                "end": {
+                  "line": 128,
+                  "column": 32
+                }
+              }
+            },
+            {
+              "type": "Property",
+              "key": {
+                "type": "Literal",
+                "value": "smh",
+                "raw": "'smh'",
+                "loc": {
+                  "start": {
+                    "line": 128,
+                    "column": 34
+                  },
+                  "end": {
+                    "line": 128,
+                    "column": 39
+                  }
+                }
+              },
+              "computed": false,
+              "value": {
+                "type": "Identifier",
+                "name": "smh",
+                "loc": {
+                  "start": {
+                    "line": 128,
+                    "column": 40
+                  },
+                  "end": {
+                    "line": 128,
+                    "column": 43
+                  }
+                }
+              },
+              "kind": "init",
+              "method": false,
+              "shorthand": false,
+              "loc": {
+                "start": {
+                  "line": 128,
+                  "column": 34
+                },
+                "end": {
+                  "line": 128,
+                  "column": 43
+                }
+              }
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 128,
+              "column": 11
+            },
+            "end": {
+              "line": 128,
+              "column": 44
+            }
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 128,
+            "column": 0
+          },
+          "end": {
+            "line": 128,
+            "column": 44
+          }
         }
-      ],
-      "kind": "var",
+      },
       "loc": {
         "start": {
-          "line": 11,
+          "line": 128,
           "column": 0
         },
         "end": {
-          "line": 11,
-          "column": 13
-        }
-      }
-    },
-    {
-      "type": "VariableDeclaration",
-      "declarations": [
-        {
-          "type": "VariableDeclarator",
-          "id": {
-            "type": "Identifier",
-            "name": "school",
-            "loc": {
-              "start": {
-                "line": 12,
-                "column": 4
-              },
-              "end": {
-                "line": 12,
-                "column": 10
-              }
-            }
-          },
-          "init": {
-            "type": "Literal",
-            "value": "WSU",
-            "raw": "\"WSU\"",
-            "loc": {
-              "start": {
-                "line": 12,
-                "column": 13
-              },
-              "end": {
-                "line": 12,
-                "column": 18
-              }
-            }
-          },
-          "loc": {
-            "start": {
-              "line": 12,
-              "column": 4
-            },
-            "end": {
-              "line": 12,
-              "column": 18
-            }
-          }
-        }
-      ],
-      "kind": "var",
-      "loc": {
-        "start": {
-          "line": 12,
-          "column": 0
-        },
-        "end": {
-          "line": 12,
-          "column": 18
-        }
-      }
-    },
-    {
-      "type": "VariableDeclaration",
-      "declarations": [
-        {
-          "type": "VariableDeclarator",
-          "id": {
-            "type": "Identifier",
-            "name": "asdf",
-            "loc": {
-              "start": {
-                "line": 13,
-                "column": 4
-              },
-              "end": {
-                "line": 13,
-                "column": 8
-              }
-            }
-          },
-          "init": {
-            "type": "Literal",
-            "value": true,
-            "raw": "true",
-            "loc": {
-              "start": {
-                "line": 13,
-                "column": 11
-              },
-              "end": {
-                "line": 13,
-                "column": 15
-              }
-            }
-          },
-          "loc": {
-            "start": {
-              "line": 13,
-              "column": 4
-            },
-            "end": {
-              "line": 13,
-              "column": 15
-            }
-          }
-        }
-      ],
-      "kind": "var",
-      "loc": {
-        "start": {
-          "line": 13,
-          "column": 0
-        },
-        "end": {
-          "line": 13,
-          "column": 15
+          "line": 128,
+          "column": 44
         }
       }
     }
@@ -181,13 +199,12 @@
   "sourceType": "script",
   "loc": {
     "start": {
-      "line": 11,
+      "line": 128,
       "column": 0
     },
     "end": {
-      "line": 13,
-      "column": 15
+      "line": 128,
+      "column": 44
     }
   }
 }
->>>>>>> 160b9550290341a6be981fd9e47c2dc68bc0ad69

@@ -27,9 +27,11 @@ const opNodeNot = require('./classes/opNodeType/opNodeNot');
 const blockStatementNode = require('./classes/blockStatementNode');
 const catchClauseNode = require('./classes/catchClauseNode');
 const tryStateNode = require('./classes/tryStateNode');
+const propNode = require('./classes/propNode');
 
 const expNodeAssignment = require('./classes/expNodeType/expNodeAssignment');
 const sequenceExpNode = require('./classes/expNodeType/sequenceExpNode');
+const objExp = require('./classes/expNodeType/objExp');
 
 const funcNodeRound = require('./classes/funcNodeType/funcNodeRound');
 
@@ -442,6 +444,27 @@ function eval_node(node, env) {
             return memberObject;
 
 
+        case "ObjectExpression":
+            var objProperties = [];
+            node.properties.forEach(function (ele){
+                var propNode = eval_node(ele, env);
+                objProperties.push(propNode)
+            });
+
+            var objProp = new objExp(objProperties);
+            return objProp;
+
+        case "Property":
+            var key = eval_node(node.key, env)
+            var computed = node.computed
+            var value = eval_node(node.value, env)
+            var kind = node.kind
+            var method = node.method
+            var shorthand = node.shorthand
+
+            var property = new propNode(key, computed, value, kind, method, shorthand);
+            return property;
+
         case "ThisExpression":
             return "this";
 
@@ -496,8 +519,11 @@ function eval_node(node, env) {
             console.log("=== If Statement ===")
             var conditional = eval_node(node.test, env)
             console.log('\nConditional: ', conditional)
+
+                // Add new environment
             var consBlock = eval_node(node.consequent, env)
             console.log('\nConsequent: ', consBlock)
+
 
             var alt = eval_node(node.alternate, env)
             console.log('\nAlternate: ', alt)
@@ -537,6 +563,6 @@ ASTs.body.forEach(function (ele) {
 
 
 // console.log("-------- Generated AST --------")
-//console.log(JSON.stringify(ASTs, null, 2))
+// console.log(JSON.stringify(ASTs, null, 2))
 
 console.log(env.printEnvironment())

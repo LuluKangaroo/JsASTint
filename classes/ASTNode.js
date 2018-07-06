@@ -14,11 +14,6 @@ class ASTNode{
     	console.log("Content method empty");
     	return;
     }
-
-    // get testMethod(){
-    //     console.log("Abstract inheritance working")
-    //     return;
-    // }
 };
 
 module.exports = ASTNode;
