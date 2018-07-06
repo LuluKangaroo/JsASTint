@@ -125,7 +125,7 @@
 	Object Expression Test
 *******************************/
 
-variable = {'url':url, 'why':why, 'smh':smh}
+// variable = {'url':url, 'why':why, 'smh':smh}
 
 
 
@@ -142,16 +142,16 @@ variable = {'url':url, 'why':why, 'smh':smh}
 
 // showNotification(fakeWorker, fakeUrl)
 
-// function generateNotificationUrl(site, sku) {
-//     if (!site || !sku) {
-//         return null;
-//     }
-//     // Create the iframe URL
-//     var v = "1";
-//     var country = "xx";
-//     var locale = "xx";
-//     return "http://toolbar.shoptimate.com/v" + v + "/" + country + "/" + locale + "/" + site + "/" + sku + "/firefox.html?extensionversion=" + getVersion();
-// }
+function generateNotificationUrl(site, sku) {
+    if (!site || !sku) {
+        return null;
+    }
+    // Create the iframe URL
+    var v = "1";
+    var country = "xx";
+    var locale = "xx";
+    return "http://toolbar.shoptimate.com/v" + v + "/" + country + "/" + locale + "/" + site + "/" + sku + "/firefox.html?extensionversion=" + getVersion();
+}
 
 
 

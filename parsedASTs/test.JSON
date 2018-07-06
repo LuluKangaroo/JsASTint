@@ -2,196 +2,735 @@
   "type": "Program",
   "body": [
     {
-      "type": "ExpressionStatement",
-      "expression": {
-        "type": "AssignmentExpression",
-        "operator": "=",
-        "left": {
+      "type": "FunctionDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "generateNotificationUrl",
+        "loc": {
+          "start": {
+            "line": 145,
+            "column": 9
+          },
+          "end": {
+            "line": 145,
+            "column": 32
+          }
+        }
+      },
+      "params": [
+        {
           "type": "Identifier",
-          "name": "variable",
+          "name": "site",
           "loc": {
             "start": {
-              "line": 128,
-              "column": 0
+              "line": 145,
+              "column": 33
             },
             "end": {
-              "line": 128,
-              "column": 8
+              "line": 145,
+              "column": 37
             }
           }
         },
-        "right": {
-          "type": "ObjectExpression",
-          "properties": [
-            {
-              "type": "Property",
-              "key": {
-                "type": "Literal",
-                "value": "url",
-                "raw": "'url'",
+        {
+          "type": "Identifier",
+          "name": "sku",
+          "loc": {
+            "start": {
+              "line": 145,
+              "column": 39
+            },
+            "end": {
+              "line": 145,
+              "column": 42
+            }
+          }
+        }
+      ],
+      "body": {
+        "type": "BlockStatement",
+        "body": [
+          {
+            "type": "IfStatement",
+            "test": {
+              "type": "LogicalExpression",
+              "operator": "||",
+              "left": {
+                "type": "UnaryExpression",
+                "operator": "!",
+                "argument": {
+                  "type": "Identifier",
+                  "name": "site",
+                  "loc": {
+                    "start": {
+                      "line": 146,
+                      "column": 9
+                    },
+                    "end": {
+                      "line": 146,
+                      "column": 13
+                    }
+                  }
+                },
+                "prefix": true,
                 "loc": {
                   "start": {
-                    "line": 128,
-                    "column": 12
+                    "line": 146,
+                    "column": 8
                   },
                   "end": {
-                    "line": 128,
-                    "column": 17
+                    "line": 146,
+                    "column": 13
                   }
                 }
               },
-              "computed": false,
-              "value": {
-                "type": "Identifier",
-                "name": "url",
+              "right": {
+                "type": "UnaryExpression",
+                "operator": "!",
+                "argument": {
+                  "type": "Identifier",
+                  "name": "sku",
+                  "loc": {
+                    "start": {
+                      "line": 146,
+                      "column": 18
+                    },
+                    "end": {
+                      "line": 146,
+                      "column": 21
+                    }
+                  }
+                },
+                "prefix": true,
                 "loc": {
                   "start": {
-                    "line": 128,
-                    "column": 18
+                    "line": 146,
+                    "column": 17
                   },
                   "end": {
-                    "line": 128,
+                    "line": 146,
                     "column": 21
                   }
                 }
               },
-              "kind": "init",
-              "method": false,
-              "shorthand": false,
               "loc": {
                 "start": {
-                  "line": 128,
-                  "column": 12
+                  "line": 146,
+                  "column": 8
                 },
                 "end": {
-                  "line": 128,
+                  "line": 146,
                   "column": 21
                 }
               }
             },
-            {
-              "type": "Property",
-              "key": {
-                "type": "Literal",
-                "value": "why",
-                "raw": "'why'",
-                "loc": {
-                  "start": {
-                    "line": 128,
-                    "column": 23
+            "consequent": {
+              "type": "BlockStatement",
+              "body": [
+                {
+                  "type": "ReturnStatement",
+                  "argument": {
+                    "type": "Literal",
+                    "value": null,
+                    "raw": "null",
+                    "loc": {
+                      "start": {
+                        "line": 147,
+                        "column": 15
+                      },
+                      "end": {
+                        "line": 147,
+                        "column": 19
+                      }
+                    }
                   },
-                  "end": {
-                    "line": 128,
-                    "column": 28
+                  "loc": {
+                    "start": {
+                      "line": 147,
+                      "column": 8
+                    },
+                    "end": {
+                      "line": 147,
+                      "column": 20
+                    }
                   }
                 }
-              },
-              "computed": false,
-              "value": {
-                "type": "Identifier",
-                "name": "why",
-                "loc": {
-                  "start": {
-                    "line": 128,
-                    "column": 29
-                  },
-                  "end": {
-                    "line": 128,
-                    "column": 32
-                  }
-                }
-              },
-              "kind": "init",
-              "method": false,
-              "shorthand": false,
+              ],
               "loc": {
                 "start": {
-                  "line": 128,
+                  "line": 146,
                   "column": 23
                 },
                 "end": {
-                  "line": 128,
-                  "column": 32
+                  "line": 148,
+                  "column": 5
                 }
               }
             },
-            {
-              "type": "Property",
-              "key": {
-                "type": "Literal",
-                "value": "smh",
-                "raw": "'smh'",
+            "alternate": null,
+            "loc": {
+              "start": {
+                "line": 146,
+                "column": 4
+              },
+              "end": {
+                "line": 148,
+                "column": 5
+              }
+            }
+          },
+          {
+            "type": "VariableDeclaration",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "v",
+                  "loc": {
+                    "start": {
+                      "line": 150,
+                      "column": 8
+                    },
+                    "end": {
+                      "line": 150,
+                      "column": 9
+                    }
+                  }
+                },
+                "init": {
+                  "type": "Literal",
+                  "value": "1",
+                  "raw": "\"1\"",
+                  "loc": {
+                    "start": {
+                      "line": 150,
+                      "column": 12
+                    },
+                    "end": {
+                      "line": 150,
+                      "column": 15
+                    }
+                  }
+                },
                 "loc": {
                   "start": {
-                    "line": 128,
-                    "column": 34
+                    "line": 150,
+                    "column": 8
                   },
                   "end": {
-                    "line": 128,
-                    "column": 39
+                    "line": 150,
+                    "column": 15
+                  }
+                }
+              }
+            ],
+            "kind": "var",
+            "loc": {
+              "start": {
+                "line": 150,
+                "column": 4
+              },
+              "end": {
+                "line": 150,
+                "column": 16
+              }
+            }
+          },
+          {
+            "type": "VariableDeclaration",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "country",
+                  "loc": {
+                    "start": {
+                      "line": 151,
+                      "column": 8
+                    },
+                    "end": {
+                      "line": 151,
+                      "column": 15
+                    }
+                  }
+                },
+                "init": {
+                  "type": "Literal",
+                  "value": "xx",
+                  "raw": "\"xx\"",
+                  "loc": {
+                    "start": {
+                      "line": 151,
+                      "column": 18
+                    },
+                    "end": {
+                      "line": 151,
+                      "column": 22
+                    }
+                  }
+                },
+                "loc": {
+                  "start": {
+                    "line": 151,
+                    "column": 8
+                  },
+                  "end": {
+                    "line": 151,
+                    "column": 22
+                  }
+                }
+              }
+            ],
+            "kind": "var",
+            "loc": {
+              "start": {
+                "line": 151,
+                "column": 4
+              },
+              "end": {
+                "line": 151,
+                "column": 23
+              }
+            }
+          },
+          {
+            "type": "VariableDeclaration",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "locale",
+                  "loc": {
+                    "start": {
+                      "line": 152,
+                      "column": 8
+                    },
+                    "end": {
+                      "line": 152,
+                      "column": 14
+                    }
+                  }
+                },
+                "init": {
+                  "type": "Literal",
+                  "value": "xx",
+                  "raw": "\"xx\"",
+                  "loc": {
+                    "start": {
+                      "line": 152,
+                      "column": 17
+                    },
+                    "end": {
+                      "line": 152,
+                      "column": 21
+                    }
+                  }
+                },
+                "loc": {
+                  "start": {
+                    "line": 152,
+                    "column": 8
+                  },
+                  "end": {
+                    "line": 152,
+                    "column": 21
+                  }
+                }
+              }
+            ],
+            "kind": "var",
+            "loc": {
+              "start": {
+                "line": 152,
+                "column": 4
+              },
+              "end": {
+                "line": 152,
+                "column": 22
+              }
+            }
+          },
+          {
+            "type": "ReturnStatement",
+            "argument": {
+              "type": "BinaryExpression",
+              "operator": "+",
+              "left": {
+                "type": "BinaryExpression",
+                "operator": "+",
+                "left": {
+                  "type": "BinaryExpression",
+                  "operator": "+",
+                  "left": {
+                    "type": "BinaryExpression",
+                    "operator": "+",
+                    "left": {
+                      "type": "BinaryExpression",
+                      "operator": "+",
+                      "left": {
+                        "type": "BinaryExpression",
+                        "operator": "+",
+                        "left": {
+                          "type": "BinaryExpression",
+                          "operator": "+",
+                          "left": {
+                            "type": "BinaryExpression",
+                            "operator": "+",
+                            "left": {
+                              "type": "BinaryExpression",
+                              "operator": "+",
+                              "left": {
+                                "type": "BinaryExpression",
+                                "operator": "+",
+                                "left": {
+                                  "type": "BinaryExpression",
+                                  "operator": "+",
+                                  "left": {
+                                    "type": "Literal",
+                                    "value": "http://toolbar.shoptimate.com/v",
+                                    "raw": "\"http://toolbar.shoptimate.com/v\"",
+                                    "loc": {
+                                      "start": {
+                                        "line": 153,
+                                        "column": 11
+                                      },
+                                      "end": {
+                                        "line": 153,
+                                        "column": 44
+                                      }
+                                    }
+                                  },
+                                  "right": {
+                                    "type": "Identifier",
+                                    "name": "v",
+                                    "loc": {
+                                      "start": {
+                                        "line": 153,
+                                        "column": 47
+                                      },
+                                      "end": {
+                                        "line": 153,
+                                        "column": 48
+                                      }
+                                    }
+                                  },
+                                  "loc": {
+                                    "start": {
+                                      "line": 153,
+                                      "column": 11
+                                    },
+                                    "end": {
+                                      "line": 153,
+                                      "column": 48
+                                    }
+                                  }
+                                },
+                                "right": {
+                                  "type": "Literal",
+                                  "value": "/",
+                                  "raw": "\"/\"",
+                                  "loc": {
+                                    "start": {
+                                      "line": 153,
+                                      "column": 51
+                                    },
+                                    "end": {
+                                      "line": 153,
+                                      "column": 54
+                                    }
+                                  }
+                                },
+                                "loc": {
+                                  "start": {
+                                    "line": 153,
+                                    "column": 11
+                                  },
+                                  "end": {
+                                    "line": 153,
+                                    "column": 54
+                                  }
+                                }
+                              },
+                              "right": {
+                                "type": "Identifier",
+                                "name": "country",
+                                "loc": {
+                                  "start": {
+                                    "line": 153,
+                                    "column": 57
+                                  },
+                                  "end": {
+                                    "line": 153,
+                                    "column": 64
+                                  }
+                                }
+                              },
+                              "loc": {
+                                "start": {
+                                  "line": 153,
+                                  "column": 11
+                                },
+                                "end": {
+                                  "line": 153,
+                                  "column": 64
+                                }
+                              }
+                            },
+                            "right": {
+                              "type": "Literal",
+                              "value": "/",
+                              "raw": "\"/\"",
+                              "loc": {
+                                "start": {
+                                  "line": 153,
+                                  "column": 67
+                                },
+                                "end": {
+                                  "line": 153,
+                                  "column": 70
+                                }
+                              }
+                            },
+                            "loc": {
+                              "start": {
+                                "line": 153,
+                                "column": 11
+                              },
+                              "end": {
+                                "line": 153,
+                                "column": 70
+                              }
+                            }
+                          },
+                          "right": {
+                            "type": "Identifier",
+                            "name": "locale",
+                            "loc": {
+                              "start": {
+                                "line": 153,
+                                "column": 73
+                              },
+                              "end": {
+                                "line": 153,
+                                "column": 79
+                              }
+                            }
+                          },
+                          "loc": {
+                            "start": {
+                              "line": 153,
+                              "column": 11
+                            },
+                            "end": {
+                              "line": 153,
+                              "column": 79
+                            }
+                          }
+                        },
+                        "right": {
+                          "type": "Literal",
+                          "value": "/",
+                          "raw": "\"/\"",
+                          "loc": {
+                            "start": {
+                              "line": 153,
+                              "column": 82
+                            },
+                            "end": {
+                              "line": 153,
+                              "column": 85
+                            }
+                          }
+                        },
+                        "loc": {
+                          "start": {
+                            "line": 153,
+                            "column": 11
+                          },
+                          "end": {
+                            "line": 153,
+                            "column": 85
+                          }
+                        }
+                      },
+                      "right": {
+                        "type": "Identifier",
+                        "name": "site",
+                        "loc": {
+                          "start": {
+                            "line": 153,
+                            "column": 88
+                          },
+                          "end": {
+                            "line": 153,
+                            "column": 92
+                          }
+                        }
+                      },
+                      "loc": {
+                        "start": {
+                          "line": 153,
+                          "column": 11
+                        },
+                        "end": {
+                          "line": 153,
+                          "column": 92
+                        }
+                      }
+                    },
+                    "right": {
+                      "type": "Literal",
+                      "value": "/",
+                      "raw": "\"/\"",
+                      "loc": {
+                        "start": {
+                          "line": 153,
+                          "column": 95
+                        },
+                        "end": {
+                          "line": 153,
+                          "column": 98
+                        }
+                      }
+                    },
+                    "loc": {
+                      "start": {
+                        "line": 153,
+                        "column": 11
+                      },
+                      "end": {
+                        "line": 153,
+                        "column": 98
+                      }
+                    }
+                  },
+                  "right": {
+                    "type": "Identifier",
+                    "name": "sku",
+                    "loc": {
+                      "start": {
+                        "line": 153,
+                        "column": 101
+                      },
+                      "end": {
+                        "line": 153,
+                        "column": 104
+                      }
+                    }
+                  },
+                  "loc": {
+                    "start": {
+                      "line": 153,
+                      "column": 11
+                    },
+                    "end": {
+                      "line": 153,
+                      "column": 104
+                    }
+                  }
+                },
+                "right": {
+                  "type": "Literal",
+                  "value": "/firefox.html?extensionversion=",
+                  "raw": "\"/firefox.html?extensionversion=\"",
+                  "loc": {
+                    "start": {
+                      "line": 153,
+                      "column": 107
+                    },
+                    "end": {
+                      "line": 153,
+                      "column": 140
+                    }
+                  }
+                },
+                "loc": {
+                  "start": {
+                    "line": 153,
+                    "column": 11
+                  },
+                  "end": {
+                    "line": 153,
+                    "column": 140
                   }
                 }
               },
-              "computed": false,
-              "value": {
-                "type": "Identifier",
-                "name": "smh",
+              "right": {
+                "type": "CallExpression",
+                "callee": {
+                  "type": "Identifier",
+                  "name": "getVersion",
+                  "loc": {
+                    "start": {
+                      "line": 153,
+                      "column": 143
+                    },
+                    "end": {
+                      "line": 153,
+                      "column": 153
+                    }
+                  }
+                },
+                "arguments": [],
                 "loc": {
                   "start": {
-                    "line": 128,
-                    "column": 40
+                    "line": 153,
+                    "column": 143
                   },
                   "end": {
-                    "line": 128,
-                    "column": 43
+                    "line": 153,
+                    "column": 155
                   }
                 }
               },
-              "kind": "init",
-              "method": false,
-              "shorthand": false,
               "loc": {
                 "start": {
-                  "line": 128,
-                  "column": 34
+                  "line": 153,
+                  "column": 11
                 },
                 "end": {
-                  "line": 128,
-                  "column": 43
+                  "line": 153,
+                  "column": 155
                 }
               }
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 128,
-              "column": 11
             },
-            "end": {
-              "line": 128,
-              "column": 44
+            "loc": {
+              "start": {
+                "line": 153,
+                "column": 4
+              },
+              "end": {
+                "line": 153,
+                "column": 156
+              }
             }
           }
-        },
+        ],
         "loc": {
           "start": {
-            "line": 128,
-            "column": 0
+            "line": 145,
+            "column": 44
           },
           "end": {
-            "line": 128,
-            "column": 44
+            "line": 154,
+            "column": 1
           }
         }
       },
+      "generator": false,
+      "expression": false,
+      "async": false,
       "loc": {
         "start": {
-          "line": 128,
+          "line": 145,
           "column": 0
         },
         "end": {
-          "line": 128,
-          "column": 44
+          "line": 154,
+          "column": 1
         }
       }
     }
@@ -199,12 +738,12 @@
   "sourceType": "script",
   "loc": {
     "start": {
-      "line": 128,
+      "line": 145,
       "column": 0
     },
     "end": {
-      "line": 128,
-      "column": 44
+      "line": 154,
+      "column": 1
     }
   }
 }

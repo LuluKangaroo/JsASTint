@@ -9,7 +9,7 @@ class onePathEnvironment{
     }
 
     printEnvironment(){
-        console.log('\n-------Environment------\n')
+        console.log('\n===== Environment =====\n')
 
         for (var key in this._env) {
                 // console.log(key);
@@ -22,7 +22,7 @@ class onePathEnvironment{
                 // console.log("Content :", value.Content, "\n");
             }
         }
-        console.log("------------------------\n")
+        console.log("=======================\n")
     }
 
     getVariable(varName){

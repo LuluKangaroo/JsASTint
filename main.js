@@ -257,11 +257,11 @@ function eval_node(node, env) {
                 &&, ||
         *****************************************/
 		case "LogicalExpression":
-    		opertor = node.operator
+    		operator = node.operator
     		left = eval_node(node.left, env)
     		right = eval_node(node.right, env)
 
-			switch (opertor){
+			switch (operator){
 				case "&&":
 					// env.expPlus(left, right)
 					opNode = new opNodeAnd(left, right)
@@ -272,7 +272,7 @@ function eval_node(node, env) {
 					return opNode
 
 				default:
-					throw "STOP: Here is an new Logical Expression You need to add on!!!!"
+					throw "STOP: New logical expression " + operator
 					// return
 			}
 			return
