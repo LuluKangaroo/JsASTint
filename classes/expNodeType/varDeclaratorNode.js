@@ -1,19 +1,14 @@
 const ASTNode = require('../ASTNode');
 
 class varDeclaratorNode extends ASTNode{
-    constructor(statements){
+    constructor(name, value){
         super(null)
-        this._statements = statements
+        this._name = name
+        this._value = value
     }
 
     get Expression(){
-    	var makeExpression = "";
-    	this._statements.forEach(function (ele){
-    		// Getter methods within classes:
-    		// do NOT add () at end of call
-    		makeExpression += ele.Expression + "\n"
-    	})
-        return makeExpression
+        return this._name.Expression + " = " + this._value.Expression
     }
 };
 

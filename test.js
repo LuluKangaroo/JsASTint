@@ -140,18 +140,30 @@
 //     worker.port.emit("showNotification", {'url' : url});
 // }
 
-// showNotification(fakeWorker, fakeUrl)
-
-function generateNotificationUrl(site, sku) {
-    if (!site || !sku) {
-        return null;
-    }
-    // Create the iframe URL
-    var v = "1";
-    var country = "xx";
-    var locale = "xx";
-    return "http://toolbar.shoptimate.com/v" + v + "/" + country + "/" + locale + "/" + site + "/" + sku + "/firefox.html?extensionversion=" + getVersion();
+function moreExamples(param1, param2, param3) {
+	content = "hi"
+	return null
 }
+
+function moreExamples2(param1, param2, param3) {
+    var v = "1", country = "xx";
+    var locale = "xx";
+    return
+}
+
+function example3(argument) {
+	return "nice"
+}
+
+// function generateNotificationUrl(site, sku) {
+//     if (!site || !sku) {
+//         return null;
+//     }
+//     // Create the iframe URL
+//     var v = "1", country = "xx";
+//     var locale = "xx";
+//     return "http://toolbar.shoptimate.com/v" + v + "/" + country + "/" + locale + "/" + site + "/" + sku + "/firefox.html?extensionversion=" + getVersion();
+// }
 
 
 

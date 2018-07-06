@@ -32,8 +32,12 @@ const propNode = require('./classes/propNode');
 const expNodeAssignment = require('./classes/expNodeType/expNodeAssignment');
 const sequenceExpNode = require('./classes/expNodeType/sequenceExpNode');
 const objExp = require('./classes/expNodeType/objExp');
+const expNodeVarDec = require('./classes/expNodeType/expNodeVarDec');
+const expNodeReturn = require('./classes/expNodeType/expNodeReturn');
+const varDecNode = require('./classes/expNodeType/varDeclaratorNode');
 
 const funcNodeRound = require('./classes/funcNodeType/funcNodeRound');
+const funcNodeUserDec = require('./classes/funcNodeType/funcNodeUserDec');
 
 // var glob = require( 'glob' )
 //   , path = require( 'path' );
@@ -48,7 +52,7 @@ const funcNodeRound = require('./classes/funcNodeType/funcNodeRound');
     Program Start
 **********************/
 // global array for user defined classes 
-var userClass = [];
+var userClass = {};
 // Reading file input
 var fs = require('fs');
 var fileName = process.argv[2];
@@ -97,18 +101,25 @@ function eval_node(node, env) {
 
     switch (String(ins_node)) {
         case "VariableDeclaration":
+            var allDecs = []
             node.declarations.forEach(function (each_declarator){
-                eval_node(each_declarator,env)
+                var oneDec = eval_node(each_declarator, env)
+                allDecs.push(oneDec)
             });
-            return
+
+            var varDec = new expNodeVarDec(allDecs)
+            return varDec
 
         case "VariableDeclarator":
             varName = eval_node(node.id, env)
             varVal = eval_node(node.init, env)
 
+            var varDec = new varDecNode(varName, varVal)
+
             varName = varName.value
             env.setVariable(varName, varVal)
-            return
+
+            return varDec
 
         case "ExpressionStatement":
             expressState = eval_node(node.expression, env)
@@ -343,7 +354,7 @@ function eval_node(node, env) {
             //     console.log(statementLines[i]);
             // }
 
-            return;
+            return statementLines;
 
         case "Identifier":
             /************************************
@@ -361,7 +372,7 @@ function eval_node(node, env) {
         case "Literal":
             var val = node.value
             val_type = typeof(val)
-            // console.log(val_type)
+            // console.log(node)
 
             switch (val_type){
                 case "string":
@@ -376,8 +387,13 @@ function eval_node(node, env) {
                     value = new leafNodeBoolean(val)
                     return value
 
+                case "object":
+                    // console.log("Val: ", val)
+                    // value = new leafNodeObject(val)
+                    return  null
+
                 default:
-                    console.log("\tIn the Literal case, you need an update for lieral type!\n")
+                    console.log("\tNew literal type: " + val_type + "\n")
                     process.exit()
             }
             return
@@ -470,15 +486,28 @@ function eval_node(node, env) {
 
         case "FunctionDeclaration":
             // First parsing all Function Declarations before parsing through rest of code
-            // Build second dictionary with all USER DECLARED functions
-			var id = node.id
-			userClass.push(id)
-            // Have KEY as function NAME, and VALUE as blockStatement content within function
+		
+        	    // ID name
+            var id = eval_node(node.id, env)
 
-            // id = eval_node(node.id, env)
-            // funcParams = eval_node(node.params, env)
-            funcBody = eval_node(node.body, env)
+                // Parameters
+            var params = []
+            node.params.forEach(function (ele){
+                var param = eval_node(ele, env)
+                params.push(param)
+            })
+            
+                // Body block statment
+            var funcBody = eval_node(node.body, env)
+            // console.log("funcBody: ", funcBody)
 
+            var generator = node.generator
+            var expression = node.expression
+            var async = node.async
+
+                // Class holding all function content
+            var userDecFunc = new funcNodeUserDec(id, params, funcBody, generator, expression, async);
+            console.log(userDecFunc.Expression)
 
             // Creating new local environment to hold body within functionDeclaration
             //  Pass local environment into functionBody
@@ -486,7 +515,18 @@ function eval_node(node, env) {
             //  Later to send the returned value into somewhere lel
 
 
+
+            // Build second dictionary with all USER DECLARED functions
+            // Have KEY as function NAME, and VALUE as blockStatement content within function
+            userClass[id._val] = userDecFunc;
+            // console.log("\n \nUser declared functions: \n", userClass)
+
             return;
+
+        case "ReturnStatement":
+            var returnArg = eval_node(node.argument, env)
+            var returnNode = new expNodeReturn(returnArg)
+            return returnNode;
 
         case "TryStatement":
             var tryBlock = eval_node(node.block, env)
@@ -512,11 +552,8 @@ function eval_node(node, env) {
 
             return;
 
-        // ==========================
-        //  If Statement
-        //      Evaluation of ONLY the if branch, assumption that there is no alternative
         case "IfStatement":
-            console.log("=== If Statement ===")
+            console.log("\n=== If Statement ===")
             var conditional = eval_node(node.test, env)
             console.log('\nConditional: ', conditional)
 
@@ -532,10 +569,8 @@ function eval_node(node, env) {
 
         default:
             console.log('\n-------------')
-            console.log("\nNew case to add: " + ins_node + " At: " + node.loc.start.line)
-            // console.log("!!!!!!!!\n")
-            // console.log("Hey! I don't Know!!!!!")
-            // console.log("Stop: need to add new case :)")
+            console.log("New case to add: " + ins_node + " At: " + node.loc.start.line)
+            console.log('-------------\n')
             // process.exit()
 
     }

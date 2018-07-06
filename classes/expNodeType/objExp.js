@@ -9,7 +9,7 @@ class objExp extends ASTNode{
     get Expression(){
     	var finalPrint = "Object Expression ["
     	this._properties.forEach(function (ele){
-    		finalPrint += "\n" + ele.Expression
+    		finalPrint += "\n\t" + ele.Expression
     	})
     	finalPrint += " ]"
         return finalPrint

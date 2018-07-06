@@ -12,9 +12,6 @@ class onePathEnvironment{
         console.log('\n===== Environment =====\n')
 
         for (var key in this._env) {
-                // console.log(key);
-                // console.log(this._env[key]);
-                // console.log(this._env[key].Expression);
             // check if the property/key is defined in the object itself, not in parent
             if (this._env.hasOwnProperty(key)) {
                 var value = this._env[key]
