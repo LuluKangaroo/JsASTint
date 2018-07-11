@@ -12,6 +12,10 @@ class propNode extends ASTNode{
     }
 
     get Expression(){
+        // console.log("Key: ",  this._key)
+        // console.log("Key type: ", typeof this._key)
+        // console.log("Value: ",  this._value)
+        // console.log("Value type: ", typeof this._value)
         return "Object property: { " + this._key.Expression + ":" + this._value.Expression + " }";
     }
 };

@@ -10,6 +10,7 @@ const leafNodeIdentifier = require('./classes/leafNodeType/leafNodeIdentifier');
 const leafNodeNumber = require('./classes/leafNodeType/leafNodenumber');
 const leafNodeBoolean = require('./classes/leafNodeType/leafNodeBoolean');
 const leafNodeString = require('./classes/leafNodeType/leafNodeString');
+const leafNodeNull = require('./classes/leafNodeType/leafNodeNull');
 
 const opNodePlus = require('./classes/opNodeType/opNodePlus');
 const opNodeMinus = require('./classes/opNodeType/opNodeMinus');
@@ -94,7 +95,9 @@ function eval_node(node, env) {
     }
 
     if(node == null){
-        return null
+        console.log("found null object")
+        var nullNode = new leafNodeNull();
+        return nullNode
     }
 
     var ins_node = node.type
@@ -474,6 +477,7 @@ function eval_node(node, env) {
             var key = eval_node(node.key, env)
             var computed = node.computed
             var value = eval_node(node.value, env)
+            console.log("Value: ", value)
             var kind = node.kind
             var method = node.method
             var shorthand = node.shorthand
@@ -525,26 +529,28 @@ function eval_node(node, env) {
 
         case "ReturnStatement":
             var returnArg = eval_node(node.argument, env)
-            var returnNode = new expNodeReturn(returnArg)
-            return returnNode;
+            // var returnNode = new expNodeReturn(returnArg)
+            return;
 
         case "TryStatement":
             var tryBlock = eval_node(node.block, env)
-            var catchHand = eval_node(node.handler, env)
-            var final = eval_node(node.finalizer, env)
 
-            var tryNode = new tryStateNode(tryBlock, catchHand, final)
-            console.log("======= try statement ======")
-            console.log(tryNode)
-            console.log("============================")
-            return tryNode;
 
-        case "CatchClause":
-            var paramCase = eval_node(node.param, env)
-            var blockBody = eval_node(node.body, env)
+            // var catchHand = eval_node(node.handler, env)
+            // var final = eval_node(node.finalizer, env)
 
-            var catchNode = new catchClauseNode(paramCase, blockBody)
-            return catchNode;
+            // // var tryNode = new tryStateNode(tryBlock, catchHand, final)
+            // console.log("======= try statement ======")
+            // console.log(tryNode)
+            // console.log("============================")
+            return;
+
+        // case "CatchClause":
+        //     var paramCase = eval_node(node.param, env)
+        //     var blockBody = eval_node(node.body, env)
+
+        //     var catchNode = new catchClauseNode(paramCase, blockBody)
+        //     return catchNode;
 
         case "WhileStatement":
             conditional = eval_node(node.test, env)
@@ -597,7 +603,7 @@ ASTs.body.forEach(function (ele) {
 });
 
 
-// console.log("-------- Generated AST --------")
-// console.log(JSON.stringify(ASTs, null, 2))
+console.log("-------- Generated AST --------")
+console.log(JSON.stringify(ASTs, null, 2))
 
 console.log(env.printEnvironment())

@@ -103,8 +103,8 @@
 	Member Declaration Test
 *******************************/
 	// Examples taken from Shoptimate main.js
-// var data = self.data
-// var Request = require("request").Request;
+var data = self.data
+var Request = require("request").Request;
 
 // tabs.on('ready', function(tab){});
 
@@ -140,20 +140,20 @@
 //     worker.port.emit("showNotification", {'url' : url});
 // }
 
-function moreExamples(param1, param2, param3) {
-	content = "hi"
-	return null
-}
+// function moreExamples(param1, param2, param3) {
+// 	content = "hi"
+// 	return null
+// }
 
-function moreExamples2(param1, param2, param3) {
-    var v = "1", country = "xx";
-    var locale = "xx";
-    return
-}
+// function moreExamples2(param1, param2, param3) {
+//     var v = "1", country = "xx";
+//     var locale = "xx";
+//     return
+// }
 
-function example3(argument) {
-	return "nice"
-}
+// function example3(argument) {
+// 	return "nice"
+// }
 
 // function generateNotificationUrl(site, sku) {
 //     if (!site || !sku) {
