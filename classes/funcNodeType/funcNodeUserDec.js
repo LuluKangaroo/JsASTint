@@ -22,7 +22,7 @@ class funcNodeUserDec extends ASTNode{
         this._body.forEach(function (ele){
             funcPrint += "\t\t" + ele.Expression + "\n"
         })
-        
+
         return funcPrint
     }
 };

@@ -103,6 +103,7 @@ function eval_node(node, env) {
     var ins_node = node.type
 
     switch (String(ins_node)) {
+
         case "VariableDeclaration":
             var allDecs = []
             node.declarations.forEach(function (each_declarator){
@@ -529,8 +530,8 @@ function eval_node(node, env) {
 
         case "ReturnStatement":
             var returnArg = eval_node(node.argument, env)
-            // var returnNode = new expNodeReturn(returnArg)
-            return;
+            var returnNode = new expNodeReturn(returnArg)
+            return returnNode;
 
         case "TryStatement":
             var tryBlock = eval_node(node.block, env)
@@ -603,7 +604,7 @@ ASTs.body.forEach(function (ele) {
 });
 
 
-console.log("-------- Generated AST --------")
-console.log(JSON.stringify(ASTs, null, 2))
+// console.log("-------- Generated AST --------")
+// console.log(JSON.stringify(ASTs, null, 2))
 
 console.log(env.printEnvironment())

