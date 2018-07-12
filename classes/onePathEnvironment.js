@@ -27,6 +27,12 @@ class onePathEnvironment{
         return this._env[varName]
     }
 
+    getTable(varName){
+        var info = this._env[varName]
+        console.log(typeof info)
+        return info
+    }
+
     get getEnvironment(){
         // var str = 'Environment: \n'
 

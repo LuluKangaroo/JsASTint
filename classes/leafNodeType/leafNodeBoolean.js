@@ -4,7 +4,7 @@ class leafNodeBoolean extends ASTNode{
     constructor(value){
         super(null)
         this._val = value
-
+        this._type = "boolean"
     }
 
     get Expression(){

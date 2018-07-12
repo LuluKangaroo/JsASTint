@@ -2,6 +2,7 @@
     Importing JS Files
 **************************/
 const ASTNode = require('./classes/ASTNode');
+const varInfo = require('./classes/varInfo');
 // var testInstance = new ASTNode();
 
 const onePathEnvironment = require('./classes/onePathEnvironment');
@@ -82,6 +83,15 @@ fs2.writeFile('./parsedASTs/' + treeFileName, JSON.stringify(ASTsWithLoc, null, 
 // console.log('exit here!!!!!!!');
 // exit();
 
+function checkSensitivePass(content){
+    var varName = content._val;
+    // console.log(varName)
+    var envVariable = env.getVariable(varName);
+    // console.log(envVariable)
+    envVariable.isSensitive();
+}
+
+
 
 /******************************************************
     Eval Function
@@ -121,7 +131,9 @@ function eval_node(node, env) {
             var varDec = new varDecNode(varName, varVal)
 
             varName = varName.value
-            env.setVariable(varName, varVal)
+            varSensitivity = new varInfo(varVal)
+            varSensitivity.checkSensitivity()
+            env.setVariable(varName, varSensitivity)
 
             return varDec
 
@@ -134,7 +146,7 @@ function eval_node(node, env) {
             _var = node.left
 
             var ins_subnode = _var.type
-			console.log(ins_subnode)
+			// console.log(ins_subnode)
             if (ins_subnode == "Identifier"){
                 varName = _var.name
             } else {
@@ -143,7 +155,9 @@ function eval_node(node, env) {
             }
 
             varExpr = eval_node(node.right, env)
-            env.setVariable(varName, varExpr)
+            varSensitivity = new varInfo(varVal)
+            varSensitivity.checkSensitivity()
+            env.setVariable(varName, varSensitivity)
 
 
             assignExp = new expNodeAssignment(varName, varExpr)
@@ -416,8 +430,13 @@ function eval_node(node, env) {
             // For each iteration through each parameter within argument object
             argList.forEach(function (ele) {
                 arg = eval_node(ele, env)
+                // console.log("\nTypeof arg: ", arg)
+                // console.log(arg.Expression)
                 // Pushing final value of parameter to list
                 callArgs.push(arg);
+                if(arg._type == 'identifier'){
+                    checkSensitivePass(arg);                    
+                }
             })
 
             switch (callName){
@@ -439,8 +458,8 @@ function eval_node(node, env) {
                     return funcNode
 
                 default:
-                    console.log('\n-------------')
-                    console.log("\nNew function name: ", callName, " At: " + node.loc.start.line)
+                    // console.log('\n-------------')
+                    // console.log("\nNew function name: ", callName, " At: " + node.loc.start.line)
                     // console.log("STOP: Here is an new Call Expression You need to add on!!!!")
                     // process.exit()
                     // return
@@ -463,7 +482,6 @@ function eval_node(node, env) {
             // console.log("\nMember object: ", JSON.stringify(memberObject, null, 2))
             return memberObject;
 
-
         case "ObjectExpression":
             var objProperties = [];
             node.properties.forEach(function (ele){
@@ -478,7 +496,7 @@ function eval_node(node, env) {
             var key = eval_node(node.key, env)
             var computed = node.computed
             var value = eval_node(node.value, env)
-            console.log("Value: ", value)
+            // console.log("Value: ", value)
             var kind = node.kind
             var method = node.method
             var shorthand = node.shorthand
@@ -587,22 +605,13 @@ function eval_node(node, env) {
 
 
 ASTsWithLoc.body.forEach(function (ele) {
-    // console.log("#########################\n")
-    // console.log(JSON.stringify(ele, null, 2))
-    // console.log(typeof ele)
-    // console.log(ele.type)
-    // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$")
-
     eval_node(ele,env)
-
 });
 
 
 ASTs.body.forEach(function (ele) {
     // eval_node(ele,env)
-
 });
-
 
 // console.log("-------- Generated AST --------")
 // console.log(JSON.stringify(ASTs, null, 2))

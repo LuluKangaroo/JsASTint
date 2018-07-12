@@ -4,6 +4,7 @@ class leafNodeLiteral extends ASTNode{
     constructor(value){
         super(null)
         this._val = value
+        this._type = "literal"
     }
 
     get Expression(){
