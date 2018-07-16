@@ -1,0 +1,103 @@
+\documentclass[jou,apacite]{apa6}
+
+\title{Information Leakage Detection in JavaScript Browser Extensions}
+\shorttitle{APA style}
+
+\threeauthors{Jin Huang}{Lu Liu}{Jamie Weiss}
+\threeaffiliations{Wright State University}{University of Colorado, Boulder}{Eastern Kentucky University}
+
+\rightheader{APA style}
+\leftheader{Author One}
+
+\begin{document}
+\maketitle    
+                        
+\section{Abstract}
+
+Browser extensions are being used widely and commonly by many. However, they are not always secure and have a potential to contain vulnerabilities through leakage of sensitive user information. Extension examples include profile information autofills or shopping assistants which accesses a user's sensitive information such as account passwords or banking information. This access then leads to the risk of developers storing the information somewhere or sending it to miscellaneous network servers.
+
+The system developed from this project checks browser extensions written in JavaScript for any possible vulnerabilities related to information leakage. It is designed with a mindset of creating an elegant way of analyzing extension files by storing the read file information in optimal data structures and targeting the behaviors that many vulnerabilities show. Sensitive information includes but is not limited to: forms, cookies, passwords, URLs, account information, various history, orders, and bookmarks.
+
+\section{Introduction}
+
+KEEP CITATIONS Citation of Einstein paper~\cite{Einstein}. Citation of Freud book~\cite{Freud}. Quick summary here
+
+	\subsection{Background}
+
+		2010 third of chrome users with at least one browser extention
+	
+		extensions with capability of taking user information and either saving locally or sending off of user's computer
+
+		estimation of 85\% of organizations being affected by malicious browser extensions
+
+	\subsection{Objectives}
+
+		creating system to detect information leakages in JS extensions	
+
+		determin whether an extension's source code is deem vulnerable or not before being uploaded onto browser stores.
+
+
+
+\section{Overall Framework}
+
+Rough overview of framework and system design
+
+	\subsection{Parsing Abstract Syntax Trees}
+
+		usage of AST data structure, recursion
+
+		finding and using ESPRIMA
+
+		ESPRIMA's usage of the ESTree specification, storing output trees as .JSON files for analysis
+
+	\subsection{Interpreter}
+
+		structure of interpreter with recursive switch statement and different cases		
+
+		specifics on certain cases(?)
+
+	\subsection{Locating Sources Variables}
+
+		collection of different trends/APIs/commands that obtain different information that can be deemed sensitive
+
+		encryption/decryption (?)
+
+		storing the sensitive information tags into a table
+
+	\subsection{Locating Sink Functions}
+
+		collection of different APIs that were used as sink areas
+
+		elaboration on how the sink functions were identified
+
+	\subsection{Vulnerability Analysis}
+
+		elaboration on environment created to keep track of sensitive variables
+
+		methods on how to connect source variables with the sink methods found, and finalizing the identified vulnerabilities
+
+
+
+\section{Evaluation}
+
+	some kind of evaluation overview
+
+	\subsection{Tests Results}
+
+		creating test codes and example vulnerabilities
+
+		running interpreter system on created examples
+
+	\subsection{conclusion}
+
+		system is able to identify a code's vulnerable sources and sinks
+		
+		future expansion on further cases, sources, and sinks for more thorough usability
+
+		adding in real world extension source codes with the testing data		
+
+		needing to continue expansion due to data driven model
+
+\bibliography{references}
+
+\end{document}
